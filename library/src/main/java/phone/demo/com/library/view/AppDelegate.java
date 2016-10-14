@@ -26,10 +26,6 @@ public abstract class AppDelegate implements IDelegate {
     //presenter类
     protected Activity activity;
 
-    public AppDelegate() {
-
-    }
-
     public AppDelegate(Activity activity) {
         this.activity = activity;
     }

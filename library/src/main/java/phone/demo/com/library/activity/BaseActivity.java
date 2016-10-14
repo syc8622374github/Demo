@@ -26,22 +26,4 @@ public abstract class BaseActivity<T extends IDelegate> extends ActivityPresente
                     localLayoutParams.flags);
         }*/
     }
-
-    /*@Override
-    protected void initToolbar() {
-        if (getToolbarAvailable()) {
-            toolbar = viewDelegate.getToolbar();
-            if (toolbar == null) {
-                View topLayout = View.inflate(this, R.layout.base_toolbar, null);
-                toolbar = (Toolbar) topLayout.findViewById(R.id.toolbar);
-                toolbar.setTitle(getToolBarTitle());
-            }
-            if (toolbar != null)
-                setSupportActionBar(toolbar);
-        }
-    }*/
-
-    public String getToolBarTitle() {
-        return "hahaha";
-    }
 }

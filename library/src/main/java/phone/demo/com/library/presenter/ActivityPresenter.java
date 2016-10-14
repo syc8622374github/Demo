@@ -36,7 +36,6 @@ public abstract class ActivityPresenter<T extends IDelegate> extends AppCompatAc
      */
     public ActivityPresenter() {
         try {
-            //viewDelegate = getDelegateClass().newInstance();
             viewDelegate = createDelegate(this);
         } catch (Exception e) {
             e.printStackTrace();
