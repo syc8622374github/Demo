@@ -1,14 +1,11 @@
 package phone.demo.com.demo.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import phone.demo.com.demo.R;
+import phone.demo.com.demo.delegate.TabDelegate;
+import phone.demo.com.library.base.BaseFragment;
 
 /**
  * @author 80986
@@ -16,7 +13,7 @@ import phone.demo.com.demo.R;
  * @description
  * @date 2016/10/14 0014
  */
-public class TabFragment extends Fragment {
+public class TabFragment extends BaseFragment<TabDelegate> {
 
     private View view;
 
@@ -31,14 +28,7 @@ public class TabFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.base_fragment, null);
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        ((TextView)view.findViewById(R.id.textView)).setText(getArguments().getString("title"));
+    protected TabDelegate createDelegate(Fragment fragment) {
+        return new TabDelegate(fragment);
     }
 }

@@ -46,7 +46,7 @@ public abstract class ActivityPresenter<T extends IDelegate> extends AppCompatAc
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
-        viewDelegate.create(getLayoutInflater(),null,savedInstanceState);
+        //viewDelegate.create(getLayoutInflater(),null,savedInstanceState);
         if(viewDelegate.hasActivity()){
             setContentView(viewDelegate.getRootLayoutId());
         }else{

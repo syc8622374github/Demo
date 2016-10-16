@@ -3,6 +3,7 @@ package phone.demo.com.library.view;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -23,17 +24,25 @@ public abstract class AppDelegate implements IDelegate {
 
     protected View rootView;
     protected Context context;
-    //presenter类
+    //ActivityPresenter类
     protected Activity activity;
+    //FragmentPresenter类
+    protected Fragment fragment;
 
-    public AppDelegate(Activity activity) {
-        this.activity = activity;
+    protected AppDelegate(Fragment fragment){
+        this.fragment = fragment;
+        this.activity = fragment.getActivity();
+        this.context = fragment.getContext();
     }
 
+    protected AppDelegate(Activity activity) {
+        this.activity = activity;
+        context = activity.getBaseContext();
+    }
 
     @Override
     public void create(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(getRootLayoutId(),container);
+        rootView = inflater.inflate(getRootLayoutId(),container,false);
         context = rootView.getContext();
     }
 

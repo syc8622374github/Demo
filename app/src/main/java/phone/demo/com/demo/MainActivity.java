@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import phone.demo.com.demo.delegate.MainDelegate;
-import phone.demo.com.library.activity.BaseActivity;
+import phone.demo.com.library.base.BaseActivity;
 
 public class MainActivity extends BaseActivity<MainDelegate> {
 

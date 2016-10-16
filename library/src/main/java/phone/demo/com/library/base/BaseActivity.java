@@ -1,4 +1,4 @@
-package phone.demo.com.library.activity;
+package phone.demo.com.library.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
