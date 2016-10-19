@@ -1,8 +1,8 @@
 package phone.demo.com.demo.delegate;
 
 import android.support.v4.app.Fragment;
-import android.view.View;
-import android.widget.TextView;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import phone.demo.com.demo.R;
 import phone.demo.com.library.bean.ImageDetail;
@@ -21,6 +21,8 @@ import rx.schedulers.Schedulers;
  */
 public class TabDelegate extends AppDelegate {
 
+    private RecyclerView recyclerView;
+
     public TabDelegate(Fragment fragment) {
         super(fragment);
     }
@@ -33,6 +35,7 @@ public class TabDelegate extends AppDelegate {
     @Override
     public void initWidget() {
         super.initWidget();
+        recyclerView = get(R.id.content_list);
     }
 
     @Override
@@ -45,18 +48,14 @@ public class TabDelegate extends AppDelegate {
                 .subscribe(new Action1<ImageListResponse<ImageDetail>>() {
                     @Override
                     public void call(ImageListResponse<ImageDetail> imageDetailImageListResponse) {
-                        ((TextView)rootView.findViewById(R.id.textView)).setText(imageDetailImageListResponse.getResult().toString());
+                        //((TextView)rootView.findViewById(R.id.textView)).setText(imageDetailImageListResponse.getResult().toString());
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
                         LogUtil.e(throwable.getStackTrace().toString());
+                        Toast.makeText(context, R.string.load_error, Toast.LENGTH_SHORT).show();
                     }
                 });
-    }
-
-    @Override
-    public View getLoadingTargetView() {
-        return get(R.id.textView);
     }
 }
