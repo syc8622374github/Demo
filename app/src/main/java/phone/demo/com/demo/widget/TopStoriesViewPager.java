@@ -25,7 +25,6 @@ import java.util.concurrent.TimeUnit;
 
 import phone.demo.com.demo.bean.TopStories;
 import phone.demo.com.demo.utils.ScreenUtil;
-import phone.demo.com.library.application.BaseApplication;
 
 
 public class TopStoriesViewPager extends RelativeLayout {
@@ -100,7 +99,7 @@ public class TopStoriesViewPager extends RelativeLayout {
 				}
 			});
 
-			Glide.with(BaseApplication.context).load(item.getImage())
+			Glide.with(context).load(item.getImage())
 					.centerCrop()
 					.into(mImageView);
 			images.add(mImageView);

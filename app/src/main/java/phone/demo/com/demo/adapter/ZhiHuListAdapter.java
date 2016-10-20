@@ -41,9 +41,38 @@ public class ZhiHuListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private static final int TYPE_TOP = -1;
     private static final int TYPE_FOOTER = -2;
 
-    public ZhiHuListAdapter(NewsTimeLine newsTimeLine, Context context) {
+    public ZhiHuListAdapter(Context context,NewsTimeLine newsTimeLine) {
         this.newsTimeLine = newsTimeLine;
         this.context = context;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (newsTimeLine.getTop_stories() != null) {
+            if (position == 0) {
+                return TYPE_TOP;
+            } else if (position + 1 == getItemCount()) {
+                return TYPE_FOOTER;
+            } else {
+                return position;
+            }
+        } else if (position + 1 == getItemCount()) {
+            return TYPE_FOOTER;
+        } else {
+            return position;
+        }
+    }
+
+    public void notifyDataSetChanged(NewsTimeLine newsTimeLine){
+        switch (status){
+            case LOAD_MORE:
+                this.newsTimeLine.getStories().addAll(newsTimeLine.getStories());
+                break;
+            default:
+                this.newsTimeLine = newsTimeLine;
+                break;
+        }
+        notifyDataSetChanged();
     }
 
     @Override
@@ -88,6 +117,8 @@ public class ZhiHuListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         public FooterViewHolder(View itemView) {
             super(itemView);
+            tv_load_prompt = (TextView) itemView.findViewById(R.id.tv_load_prompt);
+            progress = (ProgressBar) itemView.findViewById(R.id.progress);
             LinearLayoutCompat.LayoutParams params = new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ScreenUtil.dp2px(context,40));
             itemView.setLayoutParams(params);
         }
@@ -128,7 +159,8 @@ public class ZhiHuListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         public TopStoriesViewHolder(View itemView) {
             super(itemView);
-
+            tv_top_title = (TextView) itemView.findViewById(R.id.tv_top_title);
+            vp_top_stories = (TopStoriesViewPager) itemView.findViewById(R.id.vp_top_stories);
         }
 
         public void bindItem(List<TopStories> topList) {
@@ -152,6 +184,9 @@ public class ZhiHuListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         public StoriesViewHolder(View itemView) {
             super(itemView);
+            card_stories = (CardView) itemView.findViewById(R.id.card_stories);
+            tv_stories_title = (TextView) itemView.findViewById(R.id.tv_stories_title);
+            iv_stories_img = (ImageView) itemView.findViewById(R.id.iv_stories_img);
             int screenWidth = ScreenUtil.getScreenWidth(context);
             card_stories.setLayoutParams(new LinearLayout.LayoutParams(screenWidth, LinearLayout.LayoutParams.WRAP_CONTENT));
 
@@ -169,5 +204,15 @@ public class ZhiHuListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 }
             });
         }
+    }
+
+    // change recycler state
+    public void updateLoadStatus(int status) {
+        this.status = status;
+        notifyDataSetChanged();
+    }
+
+    public int getStatus() {
+        return status;
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 
 import phone.demo.com.demo.R;
 import phone.demo.com.demo.adapter.MyFragmentPagerAdapter;
-import phone.demo.com.demo.fragment.TabFragment;
+import phone.demo.com.demo.fragment.ImageListFragment;
 import phone.demo.com.library.view.AppDelegate;
 
 /**
@@ -47,9 +47,10 @@ public class MainDelegate extends AppDelegate {
         titles.add("tab1");
         titles.add("tab2");
         titles.add("tab3");
-        fragments.add(TabFragment.newInstance("tab1"));
-        fragments.add(TabFragment.newInstance("tab2"));
-        fragments.add(TabFragment.newInstance("tab3"));
+        fragments.add(ImageListFragment.newInstance("1"));
+        fragments.add(ImageListFragment.newInstance("2"));
+        fragments.add(ImageListFragment.newInstance("3"));
+        viewPager.setOffscreenPageLimit(3);//设置至少3个fragment，防止重复创建和销毁，造成内存溢出
         viewPager.setAdapter(new MyFragmentPagerAdapter(((AppCompatActivity)activity).getSupportFragmentManager(),titles,fragments));
         tabLayout.setupWithViewPager(viewPager);
     }

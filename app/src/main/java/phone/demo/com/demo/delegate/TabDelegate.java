@@ -1,7 +1,7 @@
 package phone.demo.com.demo.delegate;
 
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import phone.demo.com.demo.R;
@@ -21,8 +21,6 @@ import rx.schedulers.Schedulers;
  */
 public class TabDelegate extends AppDelegate {
 
-    private RecyclerView recyclerView;
-
     public TabDelegate(Fragment fragment) {
         super(fragment);
     }
@@ -35,7 +33,6 @@ public class TabDelegate extends AppDelegate {
     @Override
     public void initWidget() {
         super.initWidget();
-        recyclerView = get(R.id.content_list);
     }
 
     @Override
@@ -48,7 +45,7 @@ public class TabDelegate extends AppDelegate {
                 .subscribe(new Action1<ImageListResponse<ImageDetail>>() {
                     @Override
                     public void call(ImageListResponse<ImageDetail> imageDetailImageListResponse) {
-                        //((TextView)rootView.findViewById(R.id.textView)).setText(imageDetailImageListResponse.getResult().toString());
+                        ((TextView)rootView.findViewById(R.id.textView)).setText(imageDetailImageListResponse.getResult().toString());
                     }
                 }, new Action1<Throwable>() {
                     @Override
