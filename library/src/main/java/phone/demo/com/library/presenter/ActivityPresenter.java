@@ -52,9 +52,9 @@ public abstract class ActivityPresenter<T extends IDelegate> extends AppCompatAc
         }else{
             setContentView(viewDelegate.getRootView());
         }
+        initToolbar();
         viewDelegate.initWidget();
         viewDelegate.initData();
-        initToolbar();
         if (viewDelegate.getLoadingTargetView() != null) {
             varyViewHelper = new VaryViewHelper.Builder()
                     .setDataView(viewDelegate.getLoadingTargetView())

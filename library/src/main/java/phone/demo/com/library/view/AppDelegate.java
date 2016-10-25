@@ -37,7 +37,7 @@ public abstract class AppDelegate implements IDelegate {
 
     protected AppDelegate(Activity activity) {
         this.activity = activity;
-        context = activity.getBaseContext();
+        context = activity;
     }
 
     @Override

@@ -32,12 +32,10 @@ public class ImageListDelegate extends AppDelegate {
     private LinearLayoutManager layoutManager;
     private int lastVisibleItem;
     private String time;
-    private final ZhihuApi zhihuApi;
     private NewsTimeLine timeLine;
 
     public ImageListDelegate(Fragment fragment) {
         super(fragment);
-        zhihuApi = RetrofitUtils.createApi(context, ZhihuApi.class, Url.ZHIHU_BASE_URL);
     }
 
     @Override
@@ -94,13 +92,14 @@ public class ImageListDelegate extends AppDelegate {
     }
 
     private void getBeforeNews(String time) {
-        zhihuApi.getBeforetNews(time)
+        RetrofitUtils.createApi(context, ZhihuApi.class, Url.ZHIHU_BASE_URL)
+                .getBeforetNews(time)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<NewsTimeLine>() {
                     @Override
                     public void call(NewsTimeLine newsTimeLine) {
-                        updateNewData(newsTimeLine,ZhiHuListAdapter.LOAD_MORE);
+                        updateNewData(newsTimeLine, ZhiHuListAdapter.LOAD_MORE);
                     }
                 }, new Action1<Throwable>() {
                     @Override
@@ -118,13 +117,14 @@ public class ImageListDelegate extends AppDelegate {
     }
 
     public void initZhiHuData() {
-        zhihuApi.getLatestNews()
+        RetrofitUtils.createApi(context, ZhihuApi.class, Url.ZHIHU_BASE_URL)
+                .getLatestNews()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<NewsTimeLine>() {
                     @Override
                     public void call(NewsTimeLine newsTimeLine) {
-                        updateNewData(newsTimeLine,ZhiHuListAdapter.LOAD_PULL_TO);
+                        updateNewData(newsTimeLine, ZhiHuListAdapter.LOAD_PULL_TO);
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }, new Action1<Throwable>() {
@@ -136,7 +136,7 @@ public class ImageListDelegate extends AppDelegate {
                 });
     }
 
-    private void updateNewData(NewsTimeLine newsTimeLine,int loadState) {
+    private void updateNewData(NewsTimeLine newsTimeLine, int loadState) {
         timeLine = newsTimeLine;
         time = newsTimeLine.getDate();
         if (adapter == null) {

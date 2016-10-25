@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Demo</string>
     <string name="load_error">网络不见了~</string>
+    <string name="gank_meizi">首页</string>
+    <string name="meizitu">妹纸图</string>
+    <string name="tao_female">淘女郎</string>
+    <string name="douban_meizi">豆瓣妹纸</string>
+    <string name="huaban_meizi">花瓣妹纸</string>
+    <string name="jiandan_meizi">煎蛋妹纸</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

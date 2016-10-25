@@ -17,13 +17,13 @@ public class ImageListFragment extends BaseFragment<ImageListDelegate> {
     public static final String TITLE = "title";
 
     public static ImageListFragment newInstance(String title) {
-
         Bundle args = new Bundle();
-        args.putString(TITLE,title);
+        args.putString(TITLE, title);
         ImageListFragment fragment = new ImageListFragment();
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     protected ImageListDelegate createDelegate(Fragment fragment) {
         return new ImageListDelegate(fragment);
