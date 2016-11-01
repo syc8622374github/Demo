@@ -9,8 +9,6 @@ package phone.demo.com.library.util;
 
 import android.content.Context;
 
-import com.google.gson.Gson;
-
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -29,10 +27,9 @@ public class RetrofitUtils {
         if (singleton == null) {
             synchronized (RetrofitUtils.class) {
                 if (singleton == null) {
-                    Gson gson = GsonUtils.INSTANCE.get();
                     singleton = new Retrofit.Builder()
                             .baseUrl(host)
-                            .addConverterFactory(GsonConverterFactory.create(gson))
+                            .addConverterFactory(GsonConverterFactory.create())
                             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                             .client(OkHttpUtils.getInstance(context))
                             .build();

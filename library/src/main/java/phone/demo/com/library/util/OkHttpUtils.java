@@ -2,6 +2,8 @@ package phone.demo.com.library.util;
 
 import android.content.Context;
 
+import com.facebook.stetho.okhttp3.StethoInterceptor;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -32,7 +34,10 @@ public class OkHttpUtils {
                     HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
                     httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
                     singleton = new OkHttpClient.Builder()
-                            .addNetworkInterceptor(mRewriteCacheControlInterceptor)
+                            .addInterceptor(httpLoggingInterceptor)
+                            .addNetworkInterceptor(new StethoInterceptor())
+                            .retryOnConnectionFailure(true)
+                            .connectTimeout(20, TimeUnit.SECONDS)
                             .cache(new Cache(new File(context.getCacheDir(), "responses"), 10 * 1024 * 1024)).build();
                 }
             }
