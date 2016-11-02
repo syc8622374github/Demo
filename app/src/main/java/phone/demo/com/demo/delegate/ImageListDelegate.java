@@ -33,6 +33,7 @@ public class ImageListDelegate extends AppDelegate {
     private int lastVisibleItem;
     private String time;
     private NewsTimeLine timeLine;
+    private boolean isLoadMore = false;
 
     public ImageListDelegate(Fragment fragment) {
         super(fragment);
@@ -78,13 +79,16 @@ public class ImageListDelegate extends AppDelegate {
                     }
                     if (lastVisibleItem + 1 == layoutManager
                             .getItemCount()) {
-                        adapter.updateLoadStatus(adapter.LOAD_MORE);
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                getBeforeNews(time);
-                            }
-                        }, 1000);
+                        if(!isLoadMore){
+                            adapter.updateLoadStatus(adapter.LOAD_MORE);
+                            isLoadMore = true;
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    getBeforeNews(time);
+                                }
+                            }, 1000);
+                        }
                     }
                 }
             }
@@ -100,11 +104,13 @@ public class ImageListDelegate extends AppDelegate {
                     @Override
                     public void call(NewsTimeLine newsTimeLine) {
                         updateNewData(newsTimeLine, ZhiHuListAdapter.LOAD_MORE);
+                        isLoadMore = false;
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
                         System.out.println(throwable.getMessage());
+                        isLoadMore = false;
                     }
                 });
 

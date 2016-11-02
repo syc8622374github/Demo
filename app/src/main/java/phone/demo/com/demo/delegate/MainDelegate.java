@@ -1,15 +1,20 @@
 package phone.demo.com.demo.delegate;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,6 +59,15 @@ public class MainDelegate extends AppDelegate {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         mNavigationView.inflateHeaderView(R.layout.nav_header_main);
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getGroupId() == R.id.menu_group_type) {
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
         disableNavigationViewScrollbars(mNavigationView);
     }
 
@@ -87,4 +101,16 @@ public class MainDelegate extends AppDelegate {
     public int getRootLayoutId() {
         return R.layout.activity_main;
     }
+
+    public void selectFragments(FragmentManager fragmentManager,int position) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        /*fragment = TypeNewFragment.newInstance(type, title);
+        if (fragment != null) {
+            mListenerRefresh = fragment;
+        }
+        transaction.replace(R.id.container_with_refresh, fragment);
+        transaction.commit();
+        setTitle(title);*/
+    }
+
 }

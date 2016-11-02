@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/menu_group_type" android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:checked="true"
             android:icon="@mipmap/home"
             android:title="@string/gank_meizi" />
 
         <item
             android:id="@+id/nav_meizitu"
-            android:checked="true"
             android:icon="@mipmap/picture"
             android:title="@string/meizitu" />
 
         <item
             android:id="@+id/nav_tao"
-            android:checked="true"
             android:icon="@mipmap/wedding_dress"
             android:title="@string/tao_female" />
         <item

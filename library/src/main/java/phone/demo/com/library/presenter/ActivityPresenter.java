@@ -54,6 +54,7 @@ public abstract class ActivityPresenter<T extends IDelegate> extends AppCompatAc
         initToolbar();
         viewDelegate.initWidget();
         viewDelegate.initData();
+        bindEvenListener();
         if (viewDelegate.getLoadingTargetView() != null) {
             varyViewHelper = new VaryViewHelper.Builder()
                     .setDataView(viewDelegate.getLoadingTargetView())
@@ -67,9 +68,7 @@ public abstract class ActivityPresenter<T extends IDelegate> extends AppCompatAc
                     })
                     .build();
         }
-
         Bundle extras = getIntent().getExtras();
-
         if (null != extras) {
             getBundleExtras(extras);
         }

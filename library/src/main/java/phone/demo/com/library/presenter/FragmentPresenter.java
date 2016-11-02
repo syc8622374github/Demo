@@ -41,6 +41,7 @@ public abstract class FragmentPresenter<T extends IDelegate> extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewDelegate.initWidget();
         viewDelegate.initData();
+        bindEvenListener();
         if (viewDelegate.getLoadingTargetView() != null) {
             varyViewHelper = new VaryViewHelper.Builder()
                     .setDataView(viewDelegate.getLoadingTargetView())
