@@ -19,7 +19,7 @@ import phone.demo.com.demo.R;
 import phone.demo.com.demo.bean.NewsTimeLine;
 import phone.demo.com.demo.bean.Stories;
 import phone.demo.com.demo.bean.TopStories;
-import phone.demo.com.demo.utils.ScreenUtil;
+import phone.demo.com.demo.util.ScreenUtil;
 import phone.demo.com.demo.widget.TopStoriesViewPager;
 
 /**

@@ -1,4 +1,4 @@
-package phone.demo.com.demo.utils;
+package phone.demo.com.demo.util;
 
 /**
  * @author cyc

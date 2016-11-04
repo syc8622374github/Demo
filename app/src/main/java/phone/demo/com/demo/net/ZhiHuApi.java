@@ -16,15 +16,15 @@ import rx.Observable;
 public interface ZhihuApi {
 
 
-    @GET("start-image/1080*1920")
+    @GET("http://news-at.zhihu.com/api/4/start-image/1080*1920")
     Observable<SplashImage> getSplashImage();
 
-    @GET("news/latest")
+    @GET("http://news-at.zhihu.com/api/4/news/latest")
     Observable<NewsTimeLine> getLatestNews();
 
-    @GET("news/before/{time}")
+    @GET("http://news-at.zhihu.com/api/4/news/before/{time}")
     Observable<NewsTimeLine> getBeforetNews(@Path("time") String time);
 
-    @GET("news/{id}")
+    @GET("http://news-at.zhihu.com/api/4/news/{id}")
     Observable<News> getDetailNews(@Path("id") String id);
 }

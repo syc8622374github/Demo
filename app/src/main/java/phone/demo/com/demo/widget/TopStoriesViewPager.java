@@ -24,7 +24,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import phone.demo.com.demo.bean.TopStories;
-import phone.demo.com.demo.utils.ScreenUtil;
+import phone.demo.com.demo.util.ScreenUtil;
 
 
 public class TopStoriesViewPager extends RelativeLayout {

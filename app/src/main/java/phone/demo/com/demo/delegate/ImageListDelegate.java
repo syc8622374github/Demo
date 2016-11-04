@@ -11,7 +11,7 @@ import phone.demo.com.demo.R;
 import phone.demo.com.demo.adapter.ZhiHuListAdapter;
 import phone.demo.com.demo.bean.NewsTimeLine;
 import phone.demo.com.demo.net.ZhihuApi;
-import phone.demo.com.demo.utils.Url;
+import phone.demo.com.demo.util.Url;
 import phone.demo.com.library.util.RetrofitUtils;
 import phone.demo.com.library.view.AppDelegate;
 import rx.android.schedulers.AndroidSchedulers;
