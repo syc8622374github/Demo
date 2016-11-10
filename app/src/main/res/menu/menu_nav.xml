@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:id="@+id/menu_group_type" android:checkableBehavior="single">
+    <group android:id="@+id/menu_group_type" android:menuCategory="container">
     </group>
 
-    <item android:title="Other">
+    <item android:title="Other" android:menuCategory="system">
         <menu>
-
-
             <item
                 android:id="@+id/nav_share"
                 android:icon="@mipmap/share"

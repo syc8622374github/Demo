@@ -1,4 +1,4 @@
-package phone.demo.com.demo;
+package phone.demo.com.demo.api;
 
 import phone.demo.com.demo.module.huaban.bean.ListPinsBean;
 import phone.demo.com.demo.util.Constant;

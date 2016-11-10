@@ -1,4 +1,4 @@
-package phone.demo.com.demo;
+package phone.demo.com.demo.module.main;
 
 import android.app.Activity;
 import android.os.Bundle;

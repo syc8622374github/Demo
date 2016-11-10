@@ -7,9 +7,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import java.util.List;
 
-import phone.demo.com.demo.HuaBanApi;
 import phone.demo.com.demo.R;
 import phone.demo.com.demo.adapter.RecyclerPinsHeadCardAdapter;
+import phone.demo.com.demo.api.HuaBanApi;
 import phone.demo.com.demo.module.huaban.bean.ListPinsBean;
 import phone.demo.com.demo.module.huaban.bean.PinsMainEntity;
 import phone.demo.com.demo.util.Constant;
@@ -65,7 +65,7 @@ public class HuaBanImageListDelegate extends AppDelegate {
     }
 
     public void initHuabanData(){
-        RetrofitUtils.createApi(context, HuaBanApi.class,HuaBanApi.api)
+        RetrofitUtils.createApi(context, HuaBanApi.class, HuaBanApi.api)
                 .httpsTypeLimitRx("Basic MWQ5MTJjYWU0NzE0NGZhMDlkODg6Zjk0ZmNjMDliNTliNDM0OWExNDhhMjAzYWIyZjIwYzc=", mKey, Constant.LIMIT)
                 .map(new Func1<ListPinsBean, List<PinsMainEntity>>() {
                     @Override

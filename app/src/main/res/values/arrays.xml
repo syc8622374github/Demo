@@ -23,8 +23,4 @@
         <item>@string/gank_meizi</item>
         <item>@string/meizitu</item>
     </string-array>
-    <array name="main_navigation_menu_icons">
-        <item>@mipmap/home</item>
-        <item>@mipmap/picture</item>
-    </array>
 </resources>

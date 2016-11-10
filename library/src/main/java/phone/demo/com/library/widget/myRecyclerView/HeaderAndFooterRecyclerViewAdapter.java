@@ -60,9 +60,6 @@ public class HeaderAndFooterRecyclerViewAdapter extends RecyclerView.Adapter<Rec
         }
     };
 
-    public HeaderAndFooterRecyclerViewAdapter() {
-    }
-
     public HeaderAndFooterRecyclerViewAdapter(RecyclerView.Adapter innerAdapter) {
         setAdapter(innerAdapter);
     }
@@ -179,7 +176,6 @@ public class HeaderAndFooterRecyclerViewAdapter extends RecyclerView.Adapter<Rec
         super.onViewAttachedToWindow(holder);
         //添加代码 需要调用内部adapter 才能收到通知
         mInnerAdapter.onViewAttachedToWindow(holder);
-
     }
 
     @Override

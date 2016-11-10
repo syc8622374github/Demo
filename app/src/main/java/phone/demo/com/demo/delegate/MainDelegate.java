@@ -20,10 +20,10 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
-import phone.demo.com.demo.MainActivity;
 import phone.demo.com.demo.R;
 import phone.demo.com.demo.module.huaban.HuaBanImageListFragment;
 import phone.demo.com.demo.module.huaban.HuaBanMainFragment;
+import phone.demo.com.demo.module.main.MainActivity;
 import phone.demo.com.demo.util.Constant;
 import phone.demo.com.library.view.AppDelegate;
 
@@ -43,7 +43,7 @@ public class MainDelegate extends AppDelegate {
     private NavigationView mNavigationView;
     private DrawerLayout drawerLayout;
     private FragmentManager fragmentManager;
-    private int[] navigationIcons;
+    private int[] navigationIcons = new int[]{R.mipmap.home,R.mipmap.picture};
     private String[] titleList;
     private int currentTabIndex = 0;//fragment切换选中选项
 
@@ -65,8 +65,6 @@ public class MainDelegate extends AppDelegate {
 
         drawerLayout.addDrawerListener(toggle);
         titleList = activity.getResources().getStringArray(R.array.main_navigation_menu);
-        navigationIcons = activity.getResources().getIntArray(R.array.main_navigation_menu_icons);
-        intiMenuView();
         toggle.syncState();
         mNavigationView.inflateHeaderView(R.layout.nav_header_main);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -80,6 +78,7 @@ public class MainDelegate extends AppDelegate {
             }
         });
         disableNavigationViewScrollbars(mNavigationView);
+        intiMenuView();
     }
 
     /**
@@ -87,13 +86,9 @@ public class MainDelegate extends AppDelegate {
      */
     private void intiMenuView() {
         Menu menu = mNavigationView.getMenu();
-        int order = 0;
-        for (String title : titleList) {
-//            menu.add(Menu.NONE, order++, Menu.NONE, title).setIcon(R.drawable.ic_menu_share).setCheckable(true);
-            menu.add(R.id.menu_group_type, order++, Menu.NONE, title).setIcon(navigationIcons[0]).setCheckable(true);
+        for (int i=0;i<titleList.length;i++) {
+            menu.add(R.id.menu_group_type, i, Menu.NONE, titleList[i]).setIcon(navigationIcons[i]).setCheckable(true);
         }
-//        menu.addSubMenu("text");
-        //menu.getItem(0).setChecked(true);//默认选中第一项
     }
 
     /**
