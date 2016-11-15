@@ -56,6 +56,27 @@ public class HuaBanImageListDelegate extends AppDelegate {
         super.initData();
         mAdapter = new RecyclerPinsHeadCardAdapter(recyclerView);
         HeaderAndFooterRecyclerViewAdapter headAdapter = new HeaderAndFooterRecyclerViewAdapter(mAdapter);
+        mAdapter.setOnClickItemListener(new RecyclerPinsHeadCardAdapter.OnAdapterListener() {
+            @Override
+            public void onClickImage(PinsMainEntity bean, View view) {
+
+            }
+
+            @Override
+            public void onClickTitleInfo(PinsMainEntity bean, View view) {
+
+            }
+
+            @Override
+            public void onClickInfoGather(PinsMainEntity bean, View view) {
+
+            }
+
+            @Override
+            public void onClickInfoLike(PinsMainEntity bean, View view) {
+
+            }
+        });
         recyclerView.setAdapter(headAdapter);
         recyclerView.setLayoutManager(getLayoutManager());
         initHuabanData();
