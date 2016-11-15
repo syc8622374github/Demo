@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,7 +52,8 @@ public class HuaBanMainDelegate extends AppDelegate {
             fragments.add(HuaBanImageListFragment.newInstance(bundle));
         }
         viewPager.setOffscreenPageLimit(fragments.size());
-        viewPager.setAdapter(new MyFragmentPagerAdapter(((AppCompatActivity)activity).getSupportFragmentManager(),titles,fragments));
+        //fragment嵌套子类fragment需要使用childFragmentManager 对fragment进行管理。否则会照成fragment对二次加载白屏
+        viewPager.setAdapter(new MyFragmentPagerAdapter(fragment.getChildFragmentManager(),titles,fragments));
         tabLayout.setupWithViewPager(viewPager);
     }
 }

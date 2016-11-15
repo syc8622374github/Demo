@@ -40,6 +40,7 @@ public abstract class FragmentPresenter<T extends IDelegate> extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewDelegate.initWidget();
+        viewDelegate.initVaryView();
         viewDelegate.initData();
         bindEvenListener();
         if (viewDelegate.getLoadingTargetView() != null) {

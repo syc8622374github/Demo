@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import phone.demo.com.library.R;
+import phone.demo.com.library.util.varyview.VaryViewHelper;
 
 /**
  * @author cyc
@@ -28,8 +29,9 @@ public abstract class AppDelegate implements IDelegate {
     protected Activity activity;
     //FragmentPresenter类
     protected Fragment fragment;
+    protected VaryViewHelper varyViewHelper;
 
-    protected AppDelegate(Fragment fragment){
+    protected AppDelegate(Fragment fragment) {
         this.fragment = fragment;
         this.activity = fragment.getActivity();
         this.context = fragment.getContext();
@@ -42,7 +44,7 @@ public abstract class AppDelegate implements IDelegate {
 
     @Override
     public void create(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(getRootLayoutId(),container,false);
+        rootView = inflater.inflate(getRootLayoutId(), container, false);
         context = rootView.getContext();
     }
 
@@ -57,12 +59,28 @@ public abstract class AppDelegate implements IDelegate {
 
     @Override
     public void initWidget() {
+    }
 
+    @Override
+    public void initVaryView(){
+        if (getLoadingTargetView() != null) {
+            varyViewHelper = new VaryViewHelper.Builder()
+                    .setDataView(getLoadingTargetView())
+                    .setLoadingView(rootView.inflate(context, R.layout.layout_loadingview, null))
+                    .setEmptyView(rootView.inflate(context, R.layout.layout_emptyview, null))
+                    .setErrorView(rootView.inflate(context, R.layout.layout_errorview, null))
+                    .setRefreshListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                        }
+                    })
+                    .build();
+        }
     }
 
     @Override
     public boolean hasActivity() {
-        return activity!=null?true:false;
+        return activity != null ? true : false;
     }
 
     @Override
@@ -88,20 +106,22 @@ public abstract class AppDelegate implements IDelegate {
 
     /**
      * 视图管理
+     *
      * @param id
      * @param <T>
      * @return
      */
-    protected <T extends View> T bindView(int id){
+    protected <T extends View> T bindView(int id) {
         T view = (T) mViews.get(id);
-        if(view==null){
+        if (view == null) {
             view = (T) activity.findViewById(id);
-            mViews.put(id,view);
+            mViews.put(id, view);
         }
         return view;
     }
 
-    @Override public View getLoadingTargetView() {
+    @Override
+    public View getLoadingTargetView() {
         return null;
     }
 

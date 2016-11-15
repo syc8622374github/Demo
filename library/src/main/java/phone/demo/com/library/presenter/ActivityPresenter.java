@@ -53,6 +53,7 @@ public abstract class ActivityPresenter<T extends IDelegate> extends AppCompatAc
         }
         initToolbar();
         viewDelegate.initWidget();
+        viewDelegate.initVaryView();
         viewDelegate.initData();
         bindEvenListener();
         if (viewDelegate.getLoadingTargetView() != null) {

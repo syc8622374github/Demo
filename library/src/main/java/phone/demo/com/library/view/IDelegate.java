@@ -19,6 +19,8 @@ public interface IDelegate {
     Toolbar getToolbar();
     //初始化视图
     void initWidget();
+    //初始化数据数据加载占位视图
+    void initVaryView();
     //获取根视图
     View getRootView();
     //获取menuId

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
 
 import java.util.List;
 
@@ -64,7 +65,13 @@ public class HuaBanImageListDelegate extends AppDelegate {
         return new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
     }
 
+    @Override
+    public View getLoadingTargetView() {
+        return recyclerView;
+    }
+
     public void initHuabanData(){
+        varyViewHelper.showLoadingView();
         RetrofitUtils.createApi(context, HuaBanApi.class, HuaBanApi.api)
                 .httpsTypeLimitRx("Basic MWQ5MTJjYWU0NzE0NGZhMDlkODg6Zjk0ZmNjMDliNTliNDM0OWExNDhhMjAzYWIyZjIwYzc=", mKey, Constant.LIMIT)
                 .map(new Func1<ListPinsBean, List<PinsMainEntity>>() {
@@ -82,12 +89,18 @@ public class HuaBanImageListDelegate extends AppDelegate {
 
                     @Override
                     public void onError(Throwable e) {
+                        varyViewHelper.showErrorView();
                         System.out.println(e.getMessage());
                     }
 
                     @Override
                     public void onNext(List<PinsMainEntity> result) {
                         mAdapter.setListNotify(result);
+                        if(result.size()>0){
+                            varyViewHelper.showDataView();
+                        }else{
+                            varyViewHelper.showEmptyView();
+                        }
                     }
                 });
 
