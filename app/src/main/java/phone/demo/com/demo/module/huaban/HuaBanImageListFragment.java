@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-
 import phone.demo.com.library.presenter.FragmentPresenter;
 
 /**
@@ -23,7 +21,6 @@ public class HuaBanImageListFragment extends FragmentPresenter<HuaBanImageListDe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fresco.initialize(getActivity().getApplicationContext());
     }
 
     @Override

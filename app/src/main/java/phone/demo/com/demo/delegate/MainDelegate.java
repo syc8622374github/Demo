@@ -124,13 +124,13 @@ public class MainDelegate extends AppDelegate {
 
     public void selectFragments(int position) {
         FragmentTransaction trx = fragmentManager.beginTransaction();
-        /*trx.hide(fragments.get(currentTabIndex));
+        trx.hide(fragments.get(currentTabIndex));
         if (!fragments.get(position).isAdded())
         {
             trx.add(R.id.container_with_refresh, fragments.get(position));
         }
-        trx.show(fragments.get(position)).commit();*/
-        trx.replace(R.id.container_with_refresh,fragments.get(position)).commit();
+        trx.show(fragments.get(position)).commit();
+        //trx.replace(R.id.container_with_refresh,fragments.get(position)).commit();
         currentTabIndex = position;
     }
 

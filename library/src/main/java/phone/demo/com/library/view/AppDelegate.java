@@ -107,9 +107,13 @@ public abstract class AppDelegate implements IDelegate {
     /**
      * 视图管理
      *
+     * bug:
+     * 使用缓存视图对于某些试图控件会产生引用问题，照成视图控件失效。
+     *
      * @param id
      * @param <T>
      * @return
+     * @deprecated
      */
     protected <T extends View> T bindView(int id) {
         T view = (T) mViews.get(id);

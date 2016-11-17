@@ -15,4 +15,4 @@
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         />
-</android.support.v4.widget.SwipeRefreshLayout>
+</android.support.v4.widget.SwipeRefreshLayout> 

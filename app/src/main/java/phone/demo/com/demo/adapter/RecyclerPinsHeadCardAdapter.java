@@ -155,9 +155,10 @@ public class RecyclerPinsHeadCardAdapter extends BaseRecyclerAdapter<PinsMainEnt
         holder.img_card_image.setAspectRatio(ratio);//设置宽高比
         Drawable dProgressImage =
                 CompatUtils.getTintListDrawable(mContext, R.drawable.ic_toys_black_48dp, R.color.refresh_progress_1);
-        /*Glide.with(mContext).load(url_img).placeholder(new AutoRotateDrawable(dProgressImage,2000)).centerCrop().into(holder.img_card_image);*/
+        //Glide.with(mContext).load(url_img).centerCrop().crossFade().into(holder.img_card_image);
         new ImageLoadFresco.LoadImageFrescoBuilder(mContext, holder.img_card_image, url_img)
-                .setProgressBarImage(dProgressImage)
+                // TODO: 2016/11/17 0017 添加占位图会照成recycleview 滑动不流畅问题。
+                //.setProgressBarImage(dProgressImage)
                 //加载gif图 自动播放
 //                .setControllerListener(new BaseControllerListener<ImageInfo>() {
 //                    @Override
