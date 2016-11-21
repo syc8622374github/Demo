@@ -11,6 +11,7 @@
     <color name="white">#fff</color>
     <color name="text_dark">#90220700</color>
     <color name="none">#00000000</color>
+    <color name="none_white">#00ffffff</color>
     <color name="gery">#FAFAFA</color>
     <color name="trangery">#512e2e2e</color>
     <color name="textColor">#424242</color>

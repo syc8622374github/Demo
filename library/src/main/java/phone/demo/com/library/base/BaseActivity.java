@@ -1,10 +1,7 @@
 package phone.demo.com.library.base;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.Window;
-import android.view.WindowManager;
 
 import phone.demo.com.library.presenter.ActivityPresenter;
 import phone.demo.com.library.view.IDelegate;
@@ -35,14 +32,18 @@ public abstract class BaseActivity<T extends IDelegate> extends ActivityPresente
          * (这里其实可以通过values-v19 的sytle.xml里设置windowTranslucentStatus属性为true来进行设置，但是在某些手机会不起效，所以采用代码的形式进行设置)。
          * 还需要注意的是我们这里的AppCompatAcitivity是android.support.v7.app.AppCompatActivity支持包中的AppCompatAcitivity,也是为了在低版本的android系统中兼容toolbar。
          */
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (isTranslucentStatusBar()) {
                 Window window = getWindow();
                 // Translucent status bar
                 window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                         WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             }
-        }
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setNavigationBarTintEnabled(true);
+            tintManager.setTintColor(R.color.none_white);
+        }*/
     }
 
     //是否statusBar 状态栏为透明 的方法 默认为真
