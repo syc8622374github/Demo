@@ -64,4 +64,7 @@ public class Constant {
     /*******************全局常量***********************/
     public static final String TYPE_KEY = "key"; //搜索关键字
     public static final String TITLE = "title"; //标题
+
+    //bugly appid
+    public static final String BUGLY_APP_ID = "900060052";
 }

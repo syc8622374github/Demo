@@ -40,6 +40,7 @@ public abstract class AppDelegate implements IDelegate {
     protected AppDelegate(Activity activity) {
         this.activity = activity;
         context = activity;
+        rootView = View.inflate(context,getRootLayoutId(),null);
     }
 
     @Override
@@ -66,9 +67,9 @@ public abstract class AppDelegate implements IDelegate {
         if (getLoadingTargetView() != null) {
             varyViewHelper = new VaryViewHelper.Builder()
                     .setDataView(getLoadingTargetView())
-                    .setLoadingView(rootView.inflate(context, R.layout.layout_loadingview, null))
-                    .setEmptyView(rootView.inflate(context, R.layout.layout_emptyview, null))
-                    .setErrorView(rootView.inflate(context, R.layout.layout_errorview, null))
+                    .setLoadingView(View.inflate(context, R.layout.layout_loadingview, null))
+                    .setEmptyView(View.inflate(context, R.layout.layout_emptyview, null))
+                    .setErrorView(View.inflate(context, R.layout.layout_errorview, null))
                     .setRefreshListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
