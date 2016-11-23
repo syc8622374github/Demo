@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import phone.demo.com.library.R;
-import phone.demo.com.library.util.varyview.VaryViewHelper;
 import phone.demo.com.library.view.IDelegate;
 
 /**
@@ -20,8 +18,6 @@ import phone.demo.com.library.view.IDelegate;
 
 public abstract class FragmentPresenter<T extends IDelegate> extends Fragment {
     protected T viewDelegate;
-    protected VaryViewHelper varyViewHelper;
-    private boolean isPrepared;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,35 +33,24 @@ public abstract class FragmentPresenter<T extends IDelegate> extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         viewDelegate.initWidget();
         viewDelegate.initVaryView();
         viewDelegate.initData();
         bindEvenListener();
-        if (viewDelegate.getLoadingTargetView() != null) {
-            varyViewHelper = new VaryViewHelper.Builder()
-                    .setDataView(viewDelegate.getLoadingTargetView())
-                    .setLoadingView(LayoutInflater.from(getContext()).inflate(R.layout.layout_loadingview, null))
-                    .setEmptyView(LayoutInflater.from(getContext()).inflate(R.layout.layout_emptyview, null))
-                    .setErrorView(LayoutInflater.from(getContext()).inflate(R.layout.layout_errorview, null))
-                    .setRefreshListener(new View.OnClickListener() {
-                        @Override public void onClick(View v) {
-                            onRetryListener();
-                        }
-                    })
-                    .build();
-            bindEvenListener();
-            initPrepare();
-        }
     }
 
-    private synchronized void initPrepare() {
-        if (isPrepared) {
-            onFirstUserVisible();
-        } else {
-            isPrepared = true;
-        }
+    /**
+     * fragment生命周期销毁所做操作
+     * 1.清空handler队列
+     * 3.释放视图代理层支援
+     */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        viewDelegate.onDestroy();
+        viewDelegate = null;
     }
 
     /*--------------------开放方法--------------------*/

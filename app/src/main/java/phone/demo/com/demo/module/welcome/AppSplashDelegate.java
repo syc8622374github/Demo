@@ -50,14 +50,11 @@ public class AppSplashDelegate extends AppDelegate {
 
     private void startAnim()
     {
-
         ObjectAnimator animatorX = ObjectAnimator.ofFloat(mSplashImage, "scaleX", 1f, SCALE_END);
         ObjectAnimator animatorY = ObjectAnimator.ofFloat(mSplashImage, "scaleY", 1f, SCALE_END);
-
         AnimatorSet set = new AnimatorSet();
         set.setDuration(ANIMATION_TIME).play(animatorX).with(animatorY);
         set.start();
-
         set.addListener(new AnimatorListenerAdapter()
         {
             @Override

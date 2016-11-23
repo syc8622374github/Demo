@@ -19,6 +19,14 @@
         <item>food_drink</item>
         <item>beauty</item>
     </string-array>
+    <string-array name="cartoon_titles">
+        <item>黑白漫画</item>
+        <item>内涵漫画</item>
+    </string-array>
+    <string-array name="cartoon_keys">
+        <item>black_and_white</item>
+        <item>connotation</item>
+    </string-array>
     <string-array name="main_navigation_menu">
         <item>@string/gank_meizi</item>
         <item>@string/meizitu</item>

@@ -19,9 +19,9 @@ import phone.demo.com.library.util.varyview.VaryViewHelper;
  * @description 视图代理层基类
  * @date 2016/9/27 0027
  */
-public abstract class AppDelegate implements IDelegate {
+public abstract class AppDelegate implements IDelegate,LoadListener{
     //视图管理器
-    protected final SparseArray<View> mViews = new SparseArray<View>();
+    protected final SparseArray<View> mViews = new SparseArray<>();
 
     protected View rootView;
     protected Context context;
@@ -40,7 +40,6 @@ public abstract class AppDelegate implements IDelegate {
     protected AppDelegate(Activity activity) {
         this.activity = activity;
         context = activity;
-        rootView = View.inflate(context,getRootLayoutId(),null);
     }
 
     @Override
@@ -73,10 +72,31 @@ public abstract class AppDelegate implements IDelegate {
                     .setRefreshListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            onRetryLoad();
                         }
                     })
                     .build();
         }
+    }
+
+    @Override
+    public void onRefresh() {
+
+    }
+
+    @Override
+    public void onLoadMore() {
+
+    }
+
+    @Override
+    public void onRetryLoad() {
+
+    }
+
+    @Override
+    public VaryViewHelper getVaryView() {
+        return varyViewHelper;
     }
 
     @Override
@@ -97,7 +117,8 @@ public abstract class AppDelegate implements IDelegate {
 
     @Override
     public void onDestroy() {
-
+        if (getVaryView()!=null)
+            getVaryView().releaseVaryView();
     }
 
     @Override
@@ -109,7 +130,7 @@ public abstract class AppDelegate implements IDelegate {
      * 视图管理
      *
      * bug:
-     * 使用缓存视图对于某些试图控件会产生引用问题，照成视图控件失效。
+     * 使用缓存视图对于某些视图控件会产生引用问题，照成视图控件失效。
      *
      * @param id
      * @param <T>

@@ -71,6 +71,11 @@ public class HuaBanImageListDelegate extends AppDelegate {
     @Override
     public void initData() {
         super.initData();
+        initRecyclerView();
+        initHuabanData(false);
+    }
+
+    private void initRecyclerView() {
         mAdapter = new RecyclerPinsHeadCardAdapter(recyclerView);
         HeaderAndFooterRecyclerViewAdapter headAdapter = new HeaderAndFooterRecyclerViewAdapter(mAdapter);
         mAdapter.setOnClickItemListener(new RecyclerPinsHeadCardAdapter.OnAdapterListener() {
@@ -102,8 +107,7 @@ public class HuaBanImageListDelegate extends AppDelegate {
         staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());//设置默认动画
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
-        {
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
@@ -123,7 +127,6 @@ public class HuaBanImageListDelegate extends AppDelegate {
                 }
             }
         });
-        initHuabanData(false);
     }
 
     protected View getFootView() {
@@ -139,7 +142,7 @@ public class HuaBanImageListDelegate extends AppDelegate {
         return recyclerView;
     }
 
-    public void getHuaBanDataOnScroll(){
+    public void getHuaBanDataOnScroll() {
         RetrofitUtils.createApi(context, HuaBanApi.class, HuaBanApi.api)
                 .httpsTypeMaxLimitRx(AuthUtils.getAuthorizations(), mKey, mMaxId, Constant.LIMIT)
                 .map(new Func1<ListPinsBean, List<PinsMainEntity>>() {
@@ -182,8 +185,8 @@ public class HuaBanImageListDelegate extends AppDelegate {
         return result.get(result.size() - 1).getPin_id();
     }
 
-    public void initHuabanData(final boolean isRefresh){
-        if(!isRefresh){
+    public void initHuabanData(final boolean isRefresh) {
+        if (!isRefresh) {
             varyViewHelper.showLoadingView();
             swipeRefreshLayout.setEnabled(false);
         }
@@ -215,15 +218,21 @@ public class HuaBanImageListDelegate extends AppDelegate {
                         //保存maxId值 后续加载需要
                         mMaxId = getMaxId(result);
                         mAdapter.setListNotify(result);
-                        if(!isRefresh){
+                        if (!isRefresh) {
                             swipeRefreshLayout.setEnabled(true);
-                            if(result.size()>0){
+                            if (result.size() > 0) {
                                 varyViewHelper.showDataView();
-                            }else{
+                            } else {
                                 varyViewHelper.showEmptyView();
                             }
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onRetryLoad() {
+        super.onRetryLoad();
+        initHuabanData(false);
     }
 }

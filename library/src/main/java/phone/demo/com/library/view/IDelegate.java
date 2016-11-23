@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import phone.demo.com.library.util.varyview.VaryViewHelper;
+
 /**
  * @author cyc
  * @name phone.demo.com.library.view
@@ -21,6 +23,8 @@ public interface IDelegate {
     void initWidget();
     //初始化数据数据加载占位视图
     void initVaryView();
+    //获取varyView对象
+    VaryViewHelper getVaryView();
     //获取根视图
     View getRootView();
     //获取menuId
