@@ -143,7 +143,7 @@ public class HuaBanImageListDelegate extends AppDelegate {
     }
 
     public void getHuaBanDataOnScroll() {
-        RetrofitUtils.createApi(context, HuaBanApi.class, HuaBanApi.api)
+        RetrofitUtils.createHuaBanApi(context, HuaBanApi.class, HuaBanApi.api)
                 .httpsTypeMaxLimitRx(AuthUtils.getAuthorizations(), mKey, mMaxId, Constant.LIMIT)
                 .map(new Func1<ListPinsBean, List<PinsMainEntity>>() {
                     @Override
@@ -162,7 +162,7 @@ public class HuaBanImageListDelegate extends AppDelegate {
 
                     @Override
                     public void onError(Throwable e) {
-                        Logger.d(e.toString());
+                        Logger.e(e);
                         //checkException(e);//检查错误 弹出提示
                     }
 
@@ -190,7 +190,7 @@ public class HuaBanImageListDelegate extends AppDelegate {
             varyViewHelper.showLoadingView();
             swipeRefreshLayout.setEnabled(false);
         }
-        RetrofitUtils.createApi(context, HuaBanApi.class, HuaBanApi.api)
+        RetrofitUtils.createHuaBanApi(context, HuaBanApi.class, HuaBanApi.api)
                 .httpsTypeLimitRx(AuthUtils.getAuthorizations(), mKey, Constant.LIMIT)
                 .map(new Func1<ListPinsBean, List<PinsMainEntity>>() {
                     @Override

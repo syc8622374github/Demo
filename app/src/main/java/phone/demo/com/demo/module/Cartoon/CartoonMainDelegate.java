@@ -11,7 +11,6 @@ import java.util.List;
 
 import phone.demo.com.demo.R;
 import phone.demo.com.demo.adapter.MyFragmentPagerAdapter;
-import phone.demo.com.demo.module.huaban.HuaBanImageListFragment;
 import phone.demo.com.demo.util.Constant;
 import phone.demo.com.library.view.AppDelegate;
 
@@ -50,7 +49,7 @@ public class CartoonMainDelegate extends AppDelegate {
             Bundle bundle = new Bundle();
             bundle.putString(Constant.TYPE_KEY, keys.get(i));
             bundle.putString(Constant.TITLE, titles.get(i));
-            fragments.add(HuaBanImageListFragment.newInstance(bundle));
+            fragments.add(CartoonListFragment.newInstance(bundle));
         }
         viewPager.setOffscreenPageLimit(fragments.size());
         //fragment嵌套子类fragment需要使用childFragmentManager 对fragment进行管理。否则会照成fragment对二次加载白屏

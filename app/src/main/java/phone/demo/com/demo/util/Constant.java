@@ -67,4 +67,42 @@ public class Constant {
 
     //bugly appid
     public static final String BUGLY_APP_ID = "900060052";
+
+     /*==showAPI 易源常量==*/
+
+    //ShowAPI secret
+    public static final String SECRET = "8140bd31383242c0ba08eb912f4f5002";
+    //ShowAPI appid
+    public static final String APPID = "27035";
+
+    /**
+     * 黑白漫画类型
+     * type=/category/weimanhua/kbmh 恐怖漫画
+     * type=/category/weimanhua/gushimanhua 故事漫画
+     * type=/category/duanzishou 段子手
+     * type=/category/lengzhishi 冷知识
+     * type=/category/qiqu 奇趣
+     * type=/category/dianying 电影
+     * type=/category/gaoxiao 搞笑
+     * type=/category/mengchong 萌宠
+     * type=/category/xinqi 新奇
+     * type=/category/huanqiu 环球
+     * type=/category/sheying 摄影
+     * type=/category/wanyi 玩艺
+     * type=/category/chahua 插画
+     */
+    public static final String CARTTON_BAW_TYPE_KBMH = "type=/category/weimanhua/kbmh";
+    public static final String CARTTON_BAW_TYPE_GSMH = "type=/category/weimanhua/gushimanhua";
+    public static final String CARTTON_BAW_TYPE_DZS = "type=/category/weimanhua/duanzishou";
+    public static final String CARTTON_BAW_TYPE_LZS = "type=/category/weimanhua/lengzhishi";
+    public static final String CARTTON_BAW_TYPE_QIQU = "type=/category/weimanhua/qiqu";
+    public static final String CARTTON_BAW_TYPE_DY = "type=/category/weimanhua/dianying";
+    public static final String CARTTON_BAW_TYPE_GX = "type=/category/weimanhua/gaoxiao";
+    public static final String CARTTON_BAW_TYPE_MC = "type=/category/weimanhua/mengchong";
+    public static final String CARTTON_BAW_TYPE_XQ = "type=/category/weimanhua/xinqi";
+    public static final String CARTTON_BAW_TYPE_HQ = "type=/category/weimanhua/sheying";
+    public static final String CARTTON_BAW_TYPE_SY = "type=/category/weimanhua/huanqiu";
+    public static final String CARTTON_BAW_TYPE_WY = "type=/category/weimanhua/wanyi";
+    public static final String CARTTON_BAW_TYPE_CH = "type=/category/weimanhua/chahua";
+
 }

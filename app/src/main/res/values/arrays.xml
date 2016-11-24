@@ -28,6 +28,7 @@
         <item>connotation</item>
     </string-array>
     <string-array name="main_navigation_menu">
+        <item>@string/cartoon</item>
         <item>@string/gank_meizi</item>
         <item>@string/meizitu</item>
     </string-array>

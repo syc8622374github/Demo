@@ -23,14 +23,14 @@ public class RetrofitUtils {
      * baseUrl end add "/"
      * path end no add "/"
      */
-    private static Retrofit singleton;
+    private static Retrofit singletonHuaBanApi;
 
-    public static <T> T createApi(Context context, Class<T> clazz, String host) {
-        if (singleton == null) {
+    public static <T> T createHuaBanApi(Context context, Class<T> clazz, String host) {
+        if (singletonHuaBanApi == null) {
             synchronized (RetrofitUtils.class) {
-                if (singleton == null) {
+                if (singletonHuaBanApi == null) {
                     Gson gson = new Gson();
-                    singleton = new Retrofit.Builder()
+                    singletonHuaBanApi = new Retrofit.Builder()
                             .baseUrl(host)
                             .addConverterFactory(AvatarConverter.create(gson))
                             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -39,7 +39,34 @@ public class RetrofitUtils {
                 }
             }
         }
-        return singleton.create(clazz);
+        return singletonHuaBanApi.create(clazz);
+    }
+
+
+    private static Retrofit singletonShowApi;
+    /**
+     *
+     * @param context
+     * @param clazz
+     * @param host
+     * @param <T>
+     * @return
+     */
+    public static <T> T createShowApi(Context context, Class<T> clazz, String host) {
+        if (singletonShowApi == null) {
+            synchronized (RetrofitUtils.class) {
+                if (singletonShowApi == null) {
+                    Gson gson = new Gson();
+                    singletonShowApi = new Retrofit.Builder()
+                            .baseUrl(host)
+                            .addConverterFactory(AvatarConverter.create(gson))
+                            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                            .client(OkHttpUtils.getInstance(context))
+                            .build();
+                }
+            }
+        }
+        return singletonShowApi.create(clazz);
     }
 
 }

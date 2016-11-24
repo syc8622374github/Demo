@@ -10,13 +10,7 @@ import android.util.TypedValue;
 import phone.demo.com.demo.R;
 import phone.demo.com.demo.adapter.ZhiHuListAdapter;
 import phone.demo.com.demo.bean.NewsTimeLine;
-import phone.demo.com.demo.api.ZhihuApi;
-import phone.demo.com.demo.util.Url;
-import phone.demo.com.library.util.RetrofitUtils;
 import phone.demo.com.library.view.AppDelegate;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 /**
  * @author cyc
@@ -96,7 +90,7 @@ public class ImageListDelegate extends AppDelegate {
     }
 
     private void getBeforeNews(String time) {
-        RetrofitUtils.createApi(context, ZhihuApi.class, Url.ZHIHU_BASE_URL)
+        /*RetrofitUtils.createApi(context, ZhihuApi.class, Url.ZHIHU_BASE_URL)
                 .getBeforetNews(time)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -113,7 +107,7 @@ public class ImageListDelegate extends AppDelegate {
                         isLoadMore = false;
                     }
                 });
-
+*/
     }
 
     @Override
@@ -123,7 +117,7 @@ public class ImageListDelegate extends AppDelegate {
     }
 
     public void initZhiHuData() {
-        RetrofitUtils.createApi(context, ZhihuApi.class, Url.ZHIHU_BASE_URL)
+        /*RetrofitUtils.createApi(context, ZhihuApi.class, Url.ZHIHU_BASE_URL)
                 .getLatestNews()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -139,7 +133,7 @@ public class ImageListDelegate extends AppDelegate {
                         System.out.println(throwable.getMessage());
                         swipeRefreshLayout.setRefreshing(false);
                     }
-                });
+                });*/
     }
 
     private void updateNewData(NewsTimeLine newsTimeLine, int loadState) {

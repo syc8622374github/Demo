@@ -16,7 +16,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter   {
     protected final String life = "AdapterLife";
     protected RecyclerView mRecyclerView;
     protected Context mContext;
-    protected List<T> mList =new ArrayList<>(20);
+    protected List<T> mList =new ArrayList<>();
     protected int mAdapterPosition = 0;
     protected final String mUrlSmallFormat;//小图地址
     protected final String mUrlGeneralFormat;//普通地址

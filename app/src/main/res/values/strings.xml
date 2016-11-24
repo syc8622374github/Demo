@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Demo</string>
     <string name="load_error">网络不见了~</string>
+    <string name="cartoon">漫画</string>
     <string name="gank_meizi">首页</string>
     <string name="meizitu">妹纸图</string>
     <string name="tao_female">淘女郎</string>

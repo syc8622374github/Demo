@@ -7,11 +7,12 @@ import java.util.List;
  * 易源api item 实体类
  */
 
-public class ShowApiItemBean {
+public class ShowAPIItemBean {
     private String id;
     private String time;
     private String title;
     private String link;
+    private List<String> thumbnailList;
     private List<String> imgList;
 
     public String getTime() {
@@ -26,11 +27,26 @@ public class ShowApiItemBean {
         return imgList;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public List<String> getThumbnailList() {
+        return thumbnailList;
+    }
+
     @Override
     public String toString() {
-        return "ShowApiItemBean{" +
-                "time='" + time + '\'' +
+        return "ShowAPIItemBean{" +
+                "id='" + id + '\'' +
+                ", time='" + time + '\'' +
                 ", title='" + title + '\'' +
+                ", link='" + link + '\'' +
+                ", thumbnailList=" + thumbnailList +
                 ", imgList=" + imgList +
                 '}';
     }
