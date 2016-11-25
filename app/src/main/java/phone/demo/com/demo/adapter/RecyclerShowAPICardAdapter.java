@@ -36,11 +36,11 @@ public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowAPIItemB
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecyclerShowAPICardAdapter.ViewHolderGeneral holder = null;//ViewHolder的子类
+        ViewHolderGeneral holder = null;//ViewHolder的子类
 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.cardview_item_standard, parent, false);
-        holder = new RecyclerShowAPICardAdapter.ViewHolderGeneral(view);//使用子类初始化ViewHolder
+        holder = new ViewHolderGeneral(view);//使用子类初始化ViewHolder
         return holder;
     }
 

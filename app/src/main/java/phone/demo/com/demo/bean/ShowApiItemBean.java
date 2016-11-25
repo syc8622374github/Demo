@@ -1,5 +1,6 @@
 package phone.demo.com.demo.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,8 +13,8 @@ public class ShowAPIItemBean {
     private String time;
     private String title;
     private String link;
-    private List<String> thumbnailList;
-    private List<String> imgList;
+    private ArrayList<String> thumbnailList;
+    private ArrayList<String> imgList;
 
     public String getTime() {
         return time;
@@ -23,7 +24,7 @@ public class ShowAPIItemBean {
         return title;
     }
 
-    public List<String> getImgList() {
+    public ArrayList<String> getImgList() {
         return imgList;
     }
 

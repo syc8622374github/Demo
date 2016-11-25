@@ -1,6 +1,8 @@
-package phone.demo.com.demo.module.huaban;
+package phone.demo.com.demo.module.Cartoon;
 
 import android.app.Activity;
+import android.os.Bundle;
+import android.os.PersistableBundle;
 
 import phone.demo.com.library.base.BaseActivity;
 
@@ -10,6 +12,13 @@ import phone.demo.com.library.base.BaseActivity;
  */
 
 public class CartoonReadActivity extends BaseActivity<CartoonReadDelegate> {
+
+    public final static String DATA = "image_urls";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+    }
 
     @Override
     protected CartoonReadDelegate createDelegate(Activity activity) {

@@ -1,6 +1,6 @@
 package phone.demo.com.demo.bean;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by cyc on 2016/11/23 0023.
@@ -11,7 +11,7 @@ public class ShowAPIPageBean {
     private String allPages;
     private String maxResult;
     private int currentPage;
-    private List<ShowAPIItemBean> contentlist;
+    private ArrayList<ShowAPIItemBean> contentlist;
     private boolean hasMorePage;
 
     public String getAllPages() {
@@ -26,7 +26,7 @@ public class ShowAPIPageBean {
         return currentPage;
     }
 
-    public List<ShowAPIItemBean> getContentlist() {
+    public ArrayList<ShowAPIItemBean> getContentlist() {
         return contentlist;
     }
 

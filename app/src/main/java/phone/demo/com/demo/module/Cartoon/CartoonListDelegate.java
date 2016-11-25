@@ -1,10 +1,12 @@
 package phone.demo.com.demo.module.Cartoon;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.TextUtils;
 import android.view.View;
 
 import java.util.List;
@@ -101,9 +103,40 @@ public class CartoonListDelegate extends AppDelegate {
         mAdapter.setOnClickItemListener(new RecyclerShowAPICardAdapter.OnAdapterListener() {
             @Override
             public void onItemClickListener(View view, ShowAPIItemBean showAPIItemBean, int position) {
-
+                if(!TextUtils.isEmpty(showAPIItemBean.getId())){
+                    getCartoonDetailData(showAPIItemBean.getId());
+                }else{
+                    // TODO: 2016/11/25 0025 无法查找到漫画提示
+                }
             }
         });
+    }
+
+    public void getCartoonDetailData(String id){
+        RetrofitUtils.createShowApi(context, ShowApi.class, ShowApi.API)
+                .getBAWCartoonDetailData(Constant.APPID, Constant.SECRET, id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ShowAPIResponse>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Logger.e(e);
+                    }
+
+                    @Override
+                    public void onNext(ShowAPIResponse showAPIResponse) {
+                        if (showAPIResponse.getShowapi_res_body() != null) {
+                            Intent intent = new Intent(context,CartoonReadActivity.class);
+                            intent.putExtra(CartoonReadActivity.DATA,showAPIResponse.getShowapi_res_body().getItem().getImgList());
+                            context.startActivity(intent);
+                        }
+                    }
+                });
     }
 
     /**
@@ -111,7 +144,7 @@ public class CartoonListDelegate extends AppDelegate {
      */
     public void getCartoonOnScroll() {
         RetrofitUtils.createShowApi(context, ShowApi.class, ShowApi.API)
-                .getBAWCartoonData(Constant.APPID, Constant.SECRET, Constant.CARTTON_BAW_TYPE_KBMH, mPage++)
+                .getBAWCartoonListData(Constant.APPID, Constant.SECRET, Constant.CARTTON_BAW_TYPE_KBMH, mPage++)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ShowAPIResponse>() {
@@ -145,13 +178,13 @@ public class CartoonListDelegate extends AppDelegate {
             swipeRefreshLayout.setEnabled(false);
         }
         RetrofitUtils.createShowApi(context, ShowApi.class, ShowApi.API)
-                .getBAWCartoonData(Constant.APPID,Constant.SECRET,Constant.CARTTON_BAW_TYPE_KBMH,mPage++)
+                .getBAWCartoonListData(Constant.APPID,Constant.SECRET,Constant.CARTTON_BAW_TYPE_KBMH,mPage++)
                 .subscribeOn(Schedulers.io())//发布者的运行线程 联网操作属于IO操作
                 .observeOn(AndroidSchedulers.mainThread())//订阅者的运行线程 在main线程中才能修改UI
                 .subscribe(new Subscriber<ShowAPIResponse>() {
                     @Override
                     public void onCompleted() {
-
+                        swipeRefreshLayout.setRefreshing(false);
                     }
 
                     @Override

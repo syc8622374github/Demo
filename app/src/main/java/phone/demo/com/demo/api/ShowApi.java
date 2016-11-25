@@ -16,5 +16,10 @@ public interface ShowApi {
     // 模板类型
     @GET("/958-1")
     //获取黑白漫画数据列表
-    Observable<ShowAPIResponse> getBAWCartoonData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("type") String type, @Query("page") int page);
+    Observable<ShowAPIResponse> getBAWCartoonListData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("type") String type, @Query("page") int page);
+
+    @GET("/958-2")
+    //获取黑白漫画详细信息
+    Observable<ShowAPIResponse> getBAWCartoonDetailData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("id") String id);
+
 }
