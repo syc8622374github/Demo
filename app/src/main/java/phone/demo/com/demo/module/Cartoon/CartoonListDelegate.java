@@ -14,8 +14,8 @@ import java.util.List;
 import phone.demo.com.demo.R;
 import phone.demo.com.demo.adapter.RecyclerShowAPICardAdapter;
 import phone.demo.com.demo.api.ShowApi;
-import phone.demo.com.demo.bean.ShowAPIItemBean;
-import phone.demo.com.demo.bean.ShowAPIResponse;
+import phone.demo.com.demo.bean.ShowApiItemBean;
+import phone.demo.com.demo.bean.ShowApiResponse;
 import phone.demo.com.demo.util.Constant;
 import phone.demo.com.demo.widget.LoadingFooter;
 import phone.demo.com.library.util.Logger;
@@ -102,7 +102,7 @@ public class CartoonListDelegate extends AppDelegate {
         });
         mAdapter.setOnClickItemListener(new RecyclerShowAPICardAdapter.OnAdapterListener() {
             @Override
-            public void onItemClickListener(View view, ShowAPIItemBean showAPIItemBean, int position) {
+            public void onItemClickListener(View view, ShowApiItemBean showAPIItemBean, int position) {
                 if(!TextUtils.isEmpty(showAPIItemBean.getId())){
                     getCartoonDetailData(showAPIItemBean.getId());
                 }else{
@@ -117,7 +117,7 @@ public class CartoonListDelegate extends AppDelegate {
                 .getBAWCartoonDetailData(Constant.APPID, Constant.SECRET, id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ShowAPIResponse>() {
+                .subscribe(new Subscriber<ShowApiResponse>() {
                     @Override
                     public void onCompleted() {
 
@@ -129,7 +129,7 @@ public class CartoonListDelegate extends AppDelegate {
                     }
 
                     @Override
-                    public void onNext(ShowAPIResponse showAPIResponse) {
+                    public void onNext(ShowApiResponse showAPIResponse) {
                         if (showAPIResponse.getShowapi_res_body() != null) {
                             Intent intent = new Intent(context,CartoonReadActivity.class);
                             intent.putExtra(CartoonReadActivity.DATA,showAPIResponse.getShowapi_res_body().getItem().getImgList());
@@ -147,7 +147,7 @@ public class CartoonListDelegate extends AppDelegate {
                 .getBAWCartoonListData(Constant.APPID, Constant.SECRET, Constant.CARTTON_BAW_TYPE_KBMH, mPage++)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ShowAPIResponse>() {
+                .subscribe(new Subscriber<ShowApiResponse>() {
                     @Override
                     public void onCompleted() {
 
@@ -159,7 +159,7 @@ public class CartoonListDelegate extends AppDelegate {
                     }
 
                     @Override
-                    public void onNext(ShowAPIResponse showAPIResponse) {
+                    public void onNext(ShowApiResponse showAPIResponse) {
                         if (showAPIResponse.getShowapi_res_body() != null) {
                             mAdapter.addListNotify(showAPIResponse.getShowapi_res_body().getPagebean().getContentlist());
                         }
@@ -181,7 +181,7 @@ public class CartoonListDelegate extends AppDelegate {
                 .getBAWCartoonListData(Constant.APPID,Constant.SECRET,Constant.CARTTON_BAW_TYPE_KBMH,mPage++)
                 .subscribeOn(Schedulers.io())//发布者的运行线程 联网操作属于IO操作
                 .observeOn(AndroidSchedulers.mainThread())//订阅者的运行线程 在main线程中才能修改UI
-                .subscribe(new Subscriber<ShowAPIResponse>() {
+                .subscribe(new Subscriber<ShowApiResponse>() {
                     @Override
                     public void onCompleted() {
                         swipeRefreshLayout.setRefreshing(false);
@@ -195,11 +195,11 @@ public class CartoonListDelegate extends AppDelegate {
                     }
 
                     @Override
-                    public void onNext(ShowAPIResponse showAPIResponse) {
+                    public void onNext(ShowApiResponse showAPIResponse) {
                         swipeRefreshLayout.setEnabled(true);
                         if(showAPIResponse.getShowapi_res_code()==0){
                             if(showAPIResponse.getShowapi_res_body()!=null){
-                                List<ShowAPIItemBean> beans = showAPIResponse.getShowapi_res_body().getPagebean().getContentlist();
+                                List<ShowApiItemBean> beans = showAPIResponse.getShowapi_res_body().getPagebean().getContentlist();
                                 mAdapter.setListNotify(beans);
                                 if (!isRefresh) {
                                     if (beans.size() > 0) {

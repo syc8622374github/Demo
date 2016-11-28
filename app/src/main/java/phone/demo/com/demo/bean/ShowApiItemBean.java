@@ -8,7 +8,7 @@ import java.util.List;
  * 易源api item 实体类
  */
 
-public class ShowAPIItemBean {
+public class ShowApiItemBean {
     private String id;
     private String time;
     private String title;

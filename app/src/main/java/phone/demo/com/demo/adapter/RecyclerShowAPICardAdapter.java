@@ -12,18 +12,18 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import phone.demo.com.demo.R;
-import phone.demo.com.demo.bean.ShowAPIItemBean;
+import phone.demo.com.demo.bean.ShowApiItemBean;
 
 /**
  * Created by cyc on 2016/11/23 0023.
  */
 
-public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowAPIItemBean> {
+public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowApiItemBean> {
 
     private OnAdapterListener mListener;
 
     public interface OnAdapterListener {
-        void onItemClickListener(View view, ShowAPIItemBean showAPIItemBean, int position);
+        void onItemClickListener(View view, ShowApiItemBean showAPIItemBean, int position);
     }
 
     public RecyclerShowAPICardAdapter(RecyclerView mRecyclerView) {
@@ -46,14 +46,14 @@ public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowAPIItemB
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ShowAPIItemBean showAPIItemBean = mList.get(position);
+        ShowApiItemBean showAPIItemBean = mList.get(position);
         //父类强制转换成子类 因为这个holder本来就是子类初始化的 所以可以强转
         ViewHolderGeneral viewHolder = (ViewHolderGeneral) holder;//强制类型转换 转成内部的ViewHolder
         bindData(viewHolder, showAPIItemBean);//绑定用户数据
         bindListener(viewHolder, showAPIItemBean,position);
     }
 
-    private void bindListener(ViewHolderGeneral viewHolder, final ShowAPIItemBean showAPIItemBean, final int position) {
+    private void bindListener(ViewHolderGeneral viewHolder, final ShowApiItemBean showAPIItemBean, final int position) {
         viewHolder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +62,7 @@ public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowAPIItemB
         });
     }
 
-    private void bindData(ViewHolderGeneral holder, ShowAPIItemBean showAPIItemBean) {
+    private void bindData(ViewHolderGeneral holder, ShowApiItemBean showAPIItemBean) {
         holder.tv_title.setText(showAPIItemBean.getTitle());
         holder.tv_time.setText(showAPIItemBean.getTime());
         if(showAPIItemBean.getThumbnailList()!=null&&showAPIItemBean.getThumbnailList().size()>0){

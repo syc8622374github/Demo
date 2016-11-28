@@ -5,13 +5,13 @@ package phone.demo.com.demo.bean;
  *
  */
 
-public class ShowAPIResBody {
+public class ShowApiResBody {
     private String title;
     private int ret_code;
     private String img;
     private String currentPage;
-    private ShowAPIItemBean item;
-    private ShowAPIPageBean pagebean;
+    private ShowApiItemBean item;
+    private ShowApiPageBean pagebean;
 
     public String getTitle() {
         return title;
@@ -29,11 +29,11 @@ public class ShowAPIResBody {
         return currentPage;
     }
 
-    public ShowAPIItemBean getItem() {
+    public ShowApiItemBean getItem() {
         return item;
     }
 
-    public ShowAPIPageBean getPagebean() {
+    public ShowApiPageBean getPagebean() {
         return pagebean;
     }
 

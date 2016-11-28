@@ -7,11 +7,11 @@ import java.util.ArrayList;
  * 易源api pagebean 实体类
  */
 
-public class ShowAPIPageBean {
+public class ShowApiPageBean {
     private String allPages;
     private String maxResult;
     private int currentPage;
-    private ArrayList<ShowAPIItemBean> contentlist;
+    private ArrayList<ShowApiItemBean> contentlist;
     private boolean hasMorePage;
 
     public String getAllPages() {
@@ -26,7 +26,7 @@ public class ShowAPIPageBean {
         return currentPage;
     }
 
-    public ArrayList<ShowAPIItemBean> getContentlist() {
+    public ArrayList<ShowApiItemBean> getContentlist() {
         return contentlist;
     }
 

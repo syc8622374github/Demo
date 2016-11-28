@@ -5,7 +5,7 @@ package phone.demo.com.demo.bean;
  * 易源api接口头部信息
  */
 
-public class ShowAPIResponse {
+public class ShowApiResponse {
     /**
      * 易源返回标志,0为成功，其他为失败。
      * 0成功
@@ -30,7 +30,7 @@ public class ShowAPIResponse {
      */
     private int showapi_res_code;
     private String showapi_res_error;
-    private ShowAPIResBody showapi_res_body;
+    private ShowApiResBody showapi_res_body;
 
     public int getShowapi_res_code() {
         return showapi_res_code;
@@ -40,7 +40,7 @@ public class ShowAPIResponse {
         return showapi_res_error;
     }
 
-    public ShowAPIResBody getShowapi_res_body() {
+    public ShowApiResBody getShowapi_res_body() {
         return showapi_res_body;
     }
 

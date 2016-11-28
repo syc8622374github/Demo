@@ -1,6 +1,6 @@
 package phone.demo.com.demo.api;
 
-import phone.demo.com.demo.bean.ShowAPIResponse;
+import phone.demo.com.demo.bean.ShowApiResponse;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -16,10 +16,10 @@ public interface ShowApi {
     // 模板类型
     @GET("/958-1")
     //获取黑白漫画数据列表
-    Observable<ShowAPIResponse> getBAWCartoonListData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("type") String type, @Query("page") int page);
+    Observable<ShowApiResponse> getBAWCartoonListData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("type") String type, @Query("page") int page);
 
     @GET("/958-2")
     //获取黑白漫画详细信息
-    Observable<ShowAPIResponse> getBAWCartoonDetailData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("id") String id);
+    Observable<ShowApiResponse> getBAWCartoonDetailData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("id") String id);
 
 }
