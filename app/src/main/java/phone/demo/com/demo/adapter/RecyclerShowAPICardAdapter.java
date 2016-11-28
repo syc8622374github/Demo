@@ -1,6 +1,7 @@
 package phone.demo.com.demo.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import phone.demo.com.demo.R;
-import phone.demo.com.demo.bean.ShowApiItemBean;
+import phone.demo.com.demo.module.cartoon.bean.ShowApiItemBean;
 
 /**
  * Created by cyc on 2016/11/23 0023.
@@ -64,12 +65,17 @@ public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowApiItemB
 
     private void bindData(ViewHolderGeneral holder, ShowApiItemBean showAPIItemBean) {
         holder.tv_title.setText(showAPIItemBean.getTitle());
-        holder.tv_time.setText(showAPIItemBean.getTime());
         if(showAPIItemBean.getThumbnailList()!=null&&showAPIItemBean.getThumbnailList().size()>0){
             holder.iv_thumbnail.setVisibility(View.VISIBLE);
             Glide.with(mContext).load(showAPIItemBean.getThumbnailList().get(0)).centerCrop().into(holder.iv_thumbnail);
         }else{
             holder.iv_thumbnail.setVisibility(View.GONE);
+        }
+        if(!TextUtils.isEmpty(showAPIItemBean.getTime())){
+            holder.tv_time.setText(showAPIItemBean.getTime());
+            holder.tv_time.setVisibility(View.VISIBLE);
+        }else{
+            holder.tv_time.setVisibility(View.GONE);
         }
     }
 

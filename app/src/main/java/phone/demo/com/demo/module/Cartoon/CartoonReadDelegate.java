@@ -1,10 +1,11 @@
-package phone.demo.com.demo.module.Cartoon;
+package phone.demo.com.demo.module.cartoon;
 
 import android.app.Activity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import phone.demo.com.demo.R;
@@ -53,7 +54,11 @@ public class CartoonReadDelegate extends AppDelegate {
     public void initData() {
         super.initData();
         initRecyclerView();
-        List<String> imageUrls = activity.getIntent().getStringArrayListExtra(CartoonReadActivity.DATA);
+        List<String> imageUrls = activity.getIntent().getStringArrayListExtra(CartoonReadActivity.ARRAY_DATA);
+        if(imageUrls==null){
+            imageUrls = new ArrayList<>();
+            imageUrls.add(activity.getIntent().getStringExtra(CartoonReadActivity.DATA));
+        }
         if(imageUrls!=null&&imageUrls.size()>0){
             mAdapter.setListNotify(imageUrls);
             //varyViewHelper.showDataView();

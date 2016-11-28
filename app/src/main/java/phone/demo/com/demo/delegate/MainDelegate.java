@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import phone.demo.com.demo.R;
-import phone.demo.com.demo.module.Cartoon.CartoonMainFragment;
+import phone.demo.com.demo.module.cartoon.CartoonMainFragment;
 import phone.demo.com.demo.module.huaban.HuaBanImageListFragment;
 import phone.demo.com.demo.module.huaban.HuaBanMainFragment;
 import phone.demo.com.demo.module.main.MainActivity;

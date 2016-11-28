@@ -1,4 +1,4 @@
-package phone.demo.com.demo.bean;
+package phone.demo.com.demo.module.cartoon.bean;
 
 /**
  * Created by cyc on 2016/11/23 0023.

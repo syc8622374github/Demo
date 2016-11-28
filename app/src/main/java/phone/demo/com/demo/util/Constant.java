@@ -91,18 +91,19 @@ public class Constant {
      * type=/category/wanyi 玩艺
      * type=/category/chahua 插画
      */
-    public static final String CARTTON_BAW_TYPE_KBMH = "type=/category/weimanhua/kbmh";
-    public static final String CARTTON_BAW_TYPE_GSMH = "type=/category/weimanhua/gushimanhua";
-    public static final String CARTTON_BAW_TYPE_DZS = "type=/category/weimanhua/duanzishou";
-    public static final String CARTTON_BAW_TYPE_LZS = "type=/category/weimanhua/lengzhishi";
-    public static final String CARTTON_BAW_TYPE_QIQU = "type=/category/weimanhua/qiqu";
-    public static final String CARTTON_BAW_TYPE_DY = "type=/category/weimanhua/dianying";
-    public static final String CARTTON_BAW_TYPE_GX = "type=/category/weimanhua/gaoxiao";
-    public static final String CARTTON_BAW_TYPE_MC = "type=/category/weimanhua/mengchong";
-    public static final String CARTTON_BAW_TYPE_XQ = "type=/category/weimanhua/xinqi";
-    public static final String CARTTON_BAW_TYPE_HQ = "type=/category/weimanhua/sheying";
-    public static final String CARTTON_BAW_TYPE_SY = "type=/category/weimanhua/huanqiu";
-    public static final String CARTTON_BAW_TYPE_WY = "type=/category/weimanhua/wanyi";
-    public static final String CARTTON_BAW_TYPE_CH = "type=/category/weimanhua/chahua";
+    public static final String CARTTON_BAW_TYPE_KBMH = "/category/weimanhua/kbmh";
+    public static final String CARTTON_BAW_TYPE_GSMH = "/category/weimanhua/gushimanhua";
+    public static final String CARTTON_BAW_TYPE_DZS = "/category/weimanhua/duanzishou";
+    public static final String CARTTON_BAW_TYPE_LZS = "/category/weimanhua/lengzhishi";
+    public static final String CARTTON_BAW_TYPE_QIQU = "/category/weimanhua/qiqu";
+    public static final String CARTTON_BAW_TYPE_DY = "/category/weimanhua/dianying";
+    public static final String CARTTON_BAW_TYPE_GX = "/category/weimanhua/gaoxiao";
+    public static final String CARTTON_BAW_TYPE_MC = "/category/weimanhua/mengchong";
+    public static final String CARTTON_BAW_TYPE_XQ = "/category/weimanhua/xinqi";
+    public static final String CARTTON_BAW_TYPE_HQ = "/category/weimanhua/huanqiu";
+    public static final String CARTTON_BAW_TYPE_SY = "/category/weimanhua/sheying";
+    public static final String CARTTON_BAW_TYPE_WY = "/category/weimanhua/wanyi";
+    public static final String CARTTON_BAW_TYPE_CH = "/category/weimanhua/chahua";
+    public static final String CARTTON_CONNOTATION_TYPE_ALL = "connotation_cartoon";
 
 }

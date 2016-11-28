@@ -1,4 +1,4 @@
-package phone.demo.com.demo.module.Cartoon;
+package phone.demo.com.demo.module.cartoon;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -20,12 +20,36 @@
         <item>beauty</item>
     </string-array>
     <string-array name="cartoon_titles">
-        <item>黑白漫画</item>
-        <item>内涵漫画</item>
+        <item>恐怖</item>
+        <item>故事</item>
+        <item>段子手</item>
+        <item>冷知识</item>
+        <item>奇趣</item>
+        <item>电影</item>
+        <item>搞笑</item>
+        <item>萌宠</item>
+        <item>新奇</item>
+        <item>环球</item>
+        <item>摄影</item>
+        <item>玩艺</item>
+        <item>插画</item>
+        <item>内涵</item>
     </string-array>
     <string-array name="cartoon_keys">
-        <item>black_and_white</item>
-        <item>connotation</item>
+        <item>/category/weimanhua/kbmh</item>
+        <item>/category/weimanhua/gushimanhua</item>
+        <item>/category/weimanhua/duanzishou</item>
+        <item>/category/weimanhua/lengzhishi</item>
+        <item>/category/weimanhua/qiqu</item>
+        <item>/category/weimanhua/dianying</item>
+        <item>/category/weimanhua/gaoxiao</item>
+        <item>/category/weimanhua/mengchong</item>
+        <item>/category/weimanhua/xinqi</item>
+        <item>/category/weimanhua/huanqiu</item>
+        <item>/category/weimanhua/sheying</item>
+        <item>/category/weimanhua/wanyi</item>
+        <item>/category/weimanhua/chahua</item>
+        <item>connotation_cartoon</item>
     </string-array>
     <string-array name="main_navigation_menu">
         <item>@string/cartoon</item>

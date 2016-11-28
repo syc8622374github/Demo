@@ -1,4 +1,4 @@
-package phone.demo.com.demo.bean;
+package phone.demo.com.demo.module.cartoon.bean;
 
 import java.util.ArrayList;
 

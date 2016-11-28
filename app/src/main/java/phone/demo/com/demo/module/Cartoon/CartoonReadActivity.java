@@ -1,4 +1,4 @@
-package phone.demo.com.demo.module.Cartoon;
+package phone.demo.com.demo.module.cartoon;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,7 +13,8 @@ import phone.demo.com.library.base.BaseActivity;
 
 public class CartoonReadActivity extends BaseActivity<CartoonReadDelegate> {
 
-    public final static String DATA = "image_urls";
+    public final static String ARRAY_DATA = "image_urls";
+    public final static String DATA = "image_url";
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
