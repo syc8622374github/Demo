@@ -25,4 +25,10 @@ public class CartoonReadActivity extends BaseActivity<CartoonReadDelegate> {
     protected CartoonReadDelegate createDelegate(Activity activity) {
         return new CartoonReadDelegate(activity);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.gc();
+    }
 }

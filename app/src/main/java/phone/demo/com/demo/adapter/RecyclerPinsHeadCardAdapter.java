@@ -158,7 +158,7 @@ public class RecyclerPinsHeadCardAdapter extends BaseRecyclerAdapter<PinsMainEnt
         //Glide.with(mContext).load(url_img).centerCrop().crossFade().into(holder.img_card_image);
         new ImageLoadFresco.LoadImageFrescoBuilder(mContext, holder.img_card_image, url_img)
                 // TODO: 2016/11/17 0017 添加占位图会照成recycleview 滑动不流畅问题。
-                //.setProgressBarImage(dProgressImage)
+                .setProgressBarImage(dProgressImage)
                 //加载gif图 自动播放
 //                .setControllerListener(new BaseControllerListener<ImageInfo>() {
 //                    @Override

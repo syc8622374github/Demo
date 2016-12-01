@@ -1,5 +1,6 @@
 package phone.demo.com.demo.module.cartoon;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import phone.demo.com.demo.api.ShowApi;
 import phone.demo.com.demo.module.cartoon.bean.ShowApiItemBean;
 import phone.demo.com.demo.module.cartoon.bean.ShowApiResponse;
 import phone.demo.com.demo.util.Constant;
+import phone.demo.com.demo.util.PermissionUtil;
 import phone.demo.com.demo.widget.LoadingFooter;
 import phone.demo.com.library.util.Logger;
 import phone.demo.com.library.util.RetrofitUtils;
@@ -113,6 +115,7 @@ public class CartoonListDelegate extends AppDelegate {
     @Override
     public void initData() {
         super.initData();
+        initPermission();
         initRecyclerView();
         String key = bundle.getString(Constant.TYPE_KEY);
         switch (key){
@@ -159,6 +162,11 @@ public class CartoonListDelegate extends AppDelegate {
                 getConnotationCartoonList(false);
                 break;
         }
+    }
+
+    //请求权限
+    private void initPermission() {
+        PermissionUtil.needPermission(activity,3, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     private void initRecyclerView() {

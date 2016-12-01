@@ -22,7 +22,6 @@ import java.util.List;
 
 import phone.demo.com.demo.R;
 import phone.demo.com.demo.module.cartoon.CartoonMainFragment;
-import phone.demo.com.demo.module.huaban.HuaBanImageListFragment;
 import phone.demo.com.demo.module.huaban.HuaBanMainFragment;
 import phone.demo.com.demo.module.main.MainActivity;
 import phone.demo.com.demo.util.Constant;
@@ -44,7 +43,7 @@ public class MainDelegate extends AppDelegate {
     private NavigationView mNavigationView;
     private DrawerLayout drawerLayout;
     private FragmentManager fragmentManager;
-    private int[] navigationIcons = new int[]{R.mipmap.picture,R.mipmap.home,R.mipmap.picture};
+    private int[] navigationIcons = new int[]{/*R.mipmap.picture,*/R.mipmap.home,R.mipmap.picture};
     private String[] titleList;
     private int currentTabIndex = 0;//fragment切换选中选项
 
@@ -114,7 +113,7 @@ public class MainDelegate extends AppDelegate {
         bundle.putString(Constant.TYPE_KEY,"all");
         bundle.putString(Constant.TITLE,"首页");
         fragments.add(CartoonMainFragment.newInstance(new Bundle()));
-        fragments.add(HuaBanImageListFragment.newInstance(bundle));
+        //fragments.add(HuaBanImageListFragment.newInstance(bundle));
         fragments.add(HuaBanMainFragment.newInstance(new Bundle()));
         selectFragments(0);
     }

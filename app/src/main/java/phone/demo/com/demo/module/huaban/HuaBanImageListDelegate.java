@@ -1,5 +1,6 @@
 package phone.demo.com.demo.module.huaban;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -81,7 +82,8 @@ public class HuaBanImageListDelegate extends AppDelegate {
         mAdapter.setOnClickItemListener(new RecyclerPinsHeadCardAdapter.OnAdapterListener() {
             @Override
             public void onClickImage(PinsMainEntity bean, View view) {
-
+                Intent intent = new Intent(context,HuaBanImageDetailActivity.class);
+                context.startActivity(intent);
             }
 
             @Override

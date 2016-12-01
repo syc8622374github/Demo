@@ -1,9 +1,7 @@
 package phone.demo.com.demo.module.main;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.tencent.bugly.crashreport.CrashReport;
 
-import phone.demo.com.demo.util.Constant;
 import phone.demo.com.library.application.BaseApplication;
 
 /**
@@ -15,6 +13,6 @@ public class DemoApp extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         Fresco.initialize(getApplicationContext());
-        CrashReport.initCrashReport(getApplicationContext(), Constant.BUGLY_APP_ID, false);
+        //CrashReport.initCrashReport(getApplicationContext(), Constant.BUGLY_APP_ID, false);
     }
 }

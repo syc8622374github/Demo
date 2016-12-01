@@ -37,8 +37,7 @@ public class CartoonReadDelegate extends AppDelegate {
         super.initWidget();
         recyclerView = (RecyclerView) activity.findViewById(R.id.recycler_list);
         /*final SubsamplingScaleImageView subsamplingScaleImageView = get(R.id.scale_image_view);
-        subsamplingScaleImageView.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CUSTOM);
-        subsamplingScaleImageView.setMinScale(1.0F);
+        ImageView imageView = get(R.id.image);
         Glide.with(context)
                 .load("http://s.cimg.163.com/i/img.heibaimanhua.com/wp-content/uploads/2016/11/25/20161125_5837da6d7d570.png_s.0x0.auto.jpg")
                 .asBitmap()
@@ -46,6 +45,7 @@ public class CartoonReadDelegate extends AppDelegate {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                         subsamplingScaleImageView.setImage(ImageSource.bitmap(resource));
+                        subsamplingScaleImageView.setImage(ImageSource.);
                     }
                 });*/
     }
