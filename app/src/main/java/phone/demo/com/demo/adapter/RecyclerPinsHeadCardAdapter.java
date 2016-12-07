@@ -2,6 +2,7 @@ package phone.demo.com.demo.adapter;
 
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -228,7 +229,7 @@ public class RecyclerPinsHeadCardAdapter extends BaseRecyclerAdapter<PinsMainEnt
             }
 
         });
-
+        ViewCompat.setTransitionName(holder.img_card_image, bean.getLink());
     }
 
 
