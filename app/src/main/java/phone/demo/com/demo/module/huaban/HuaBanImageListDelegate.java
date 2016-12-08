@@ -84,8 +84,10 @@ public class HuaBanImageListDelegate extends AppDelegate {
             @Override
             public void onClickImage(PinsMainEntity bean, View view) {
                 Intent intent = new Intent(context,HuaBanImageDetailActivity.class);
-                context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(activity,view.getRootView().findViewById(R.id.img_card_image),
-                        bean.getLink()).toBundle());
+                intent.putExtra("transition_bundle",bean.getFile().getKey());
+                intent.putExtra("image_url", bean.getLink());
+                context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(activity,view,
+                        bean.getFile().getKey()).toBundle());
             }
 
             @Override

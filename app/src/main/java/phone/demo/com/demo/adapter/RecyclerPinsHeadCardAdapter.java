@@ -157,6 +157,7 @@ public class RecyclerPinsHeadCardAdapter extends BaseRecyclerAdapter<PinsMainEnt
         Drawable dProgressImage =
                 CompatUtils.getTintListDrawable(mContext, R.drawable.ic_toys_black_48dp, R.color.refresh_progress_1);
         //Glide.with(mContext).load(url_img).centerCrop().crossFade().into(holder.img_card_image);
+        bean.setLink(url_img);
         new ImageLoadFresco.LoadImageFrescoBuilder(mContext, holder.img_card_image, url_img)
                 // TODO: 2016/11/17 0017 添加占位图会照成recycleview 滑动不流畅问题。
                 .setProgressBarImage(dProgressImage)
@@ -198,12 +199,12 @@ public class RecyclerPinsHeadCardAdapter extends BaseRecyclerAdapter<PinsMainEnt
         return false;
     }
 
-    private void onBindListener(ViewHolderGeneral holder, final PinsMainEntity bean) {
+    private void onBindListener(ViewHolderGeneral holder, final PinsMainEntity bean) {/*
 
         holder.rl_image.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onClickImage(bean, v);
+                //mListener.onClickImage(bean, v);
             }
         });
 
@@ -212,7 +213,14 @@ public class RecyclerPinsHeadCardAdapter extends BaseRecyclerAdapter<PinsMainEnt
             public void onClick(View v) {
                 mListener.onClickTitleInfo(bean, v);
             }
-        });
+        });*/
+
+        holder.img_card_image.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onClickImage(bean,v);
+            }
+        });/*
 
         holder.tv_card_gather.setOnClickListener(new OnClickListener() {
             @Override
@@ -228,7 +236,7 @@ public class RecyclerPinsHeadCardAdapter extends BaseRecyclerAdapter<PinsMainEnt
 //                    RxBus.getDefault().post(bean);
             }
 
-        });
+        });*/
         ViewCompat.setTransitionName(holder.img_card_image, bean.getLink());
     }
 
