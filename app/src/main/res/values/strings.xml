@@ -13,4 +13,15 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="card_title">测试Card的title应该是很长的文本</string>
+
+    <!--花瓣图片地址--><!--
+    <string name="url_image_general">http://img.hb.aicdn.com/%s_fw320sf</string>
+    <string name="url_image_big">http://img.hb.aicdn.com/%s_fw658</string>
+    <string name="url_image_small">http://img.hb.aicdn.com/%s_sq75sf</string>-->
+
+    <string name="text_to">To</string>
+    <string name="text_like_number">%d like</string>
+    <string name="text_gather_number">%d gather</string>
+    <string name="text_recommend">recommend</string>
+    <string name="text_image_describe_null">noting describe</string>
 </resources>

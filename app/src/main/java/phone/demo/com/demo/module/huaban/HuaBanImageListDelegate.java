@@ -36,12 +36,12 @@ import rx.schedulers.Schedulers;
 public class HuaBanImageListDelegate extends AppDelegate {
 
     private RecyclerView recyclerView;
+    private int mMaxId = 0;
     private String mKey;
     private RecyclerPinsHeadCardAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private StaggeredGridLayoutManager staggeredGridLayoutManager;
     private LoadingFooter mFooterView;
-    private int mMaxId = 0;
 
     protected HuaBanImageListDelegate(Fragment fragment) {
         super(fragment);
@@ -84,8 +84,7 @@ public class HuaBanImageListDelegate extends AppDelegate {
             @Override
             public void onClickImage(PinsMainEntity bean, View view) {
                 Intent intent = new Intent(context,HuaBanImageDetailActivity.class);
-                intent.putExtra("transition_bundle",bean.getFile().getKey());
-                intent.putExtra("image_url", bean.getLink());
+                intent.putExtra("data",bean);
                 context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(activity,view,
                         bean.getFile().getKey()).toBundle());
             }
