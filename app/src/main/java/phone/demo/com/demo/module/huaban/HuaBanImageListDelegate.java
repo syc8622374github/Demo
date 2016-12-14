@@ -142,10 +142,10 @@ public class HuaBanImageListDelegate extends AppDelegate {
         return mFooterView;
     }
 
-    @Override
+    /*@Override
     public View getLoadingTargetView() {
         return recyclerView;
-    }
+    }*/
 
     public void getHuaBanDataOnScroll() {
         RetrofitUtils.createHuaBanApi(context, HuaBanApi.class, HuaBanApi.api)
@@ -192,7 +192,7 @@ public class HuaBanImageListDelegate extends AppDelegate {
 
     public void initHuabanData(final boolean isRefresh) {
         if (!isRefresh) {
-            varyViewHelper.showLoadingView();
+            //varyViewHelper.showLoadingView();
             swipeRefreshLayout.setEnabled(false);
         }
         RetrofitUtils.createHuaBanApi(context, HuaBanApi.class, HuaBanApi.api)
@@ -213,7 +213,7 @@ public class HuaBanImageListDelegate extends AppDelegate {
 
                     @Override
                     public void onError(Throwable e) {
-                        varyViewHelper.showErrorView();
+                        //varyViewHelper.showErrorView();
                         swipeRefreshLayout.setRefreshing(false);
                         System.out.println(e.getMessage());
                     }
@@ -226,9 +226,9 @@ public class HuaBanImageListDelegate extends AppDelegate {
                         if (!isRefresh) {
                             swipeRefreshLayout.setEnabled(true);
                             if (result.size() > 0) {
-                                varyViewHelper.showDataView();
+                                //varyViewHelper.showDataView();
                             } else {
-                                varyViewHelper.showEmptyView();
+                                //varyViewHelper.showEmptyView();
                             }
                         }
                     }

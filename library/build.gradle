@@ -1,15 +1,8 @@
 apply plugin: 'com.android.library'
 
-def javaVersion = JavaVersion.VERSION_1_7
-
 android {
     compileSdkVersion 24
     buildToolsVersion '24.0.3'
-
-    compileOptions {
-        sourceCompatibility javaVersion
-        targetCompatibility javaVersion
-    }
 
     dexOptions {
         jumboMode = true

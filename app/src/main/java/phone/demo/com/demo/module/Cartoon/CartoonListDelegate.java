@@ -267,10 +267,10 @@ public class CartoonListDelegate extends AppDelegate {
         });
     }
 
-    @Override
+    /*@Override
     public View getLoadingTargetView() {
         return recyclerView;
-    }
+    }*/
 
     protected View getFootView() {
         if (mFooterView == null) {
@@ -287,7 +287,7 @@ public class CartoonListDelegate extends AppDelegate {
      */
     public void getBAWCartoonList(final boolean isRefresh,String cartoonType){
         if (!isRefresh) {
-            varyViewHelper.showLoadingView();
+            //varyViewHelper.showLoadingView();
             swipeRefreshLayout.setEnabled(false);
         }
         mPage = 1;
@@ -303,7 +303,7 @@ public class CartoonListDelegate extends AppDelegate {
 
                     @Override
                     public void onError(Throwable e) {
-                        varyViewHelper.showErrorView();
+                        //varyViewHelper.showErrorView();
                         swipeRefreshLayout.setRefreshing(false);
                         Logger.e(e);
                     }
@@ -317,16 +317,16 @@ public class CartoonListDelegate extends AppDelegate {
                                 mAdapter.setListNotify(beans);
                                 if (!isRefresh) {
                                     if (beans.size() > 0) {
-                                        varyViewHelper.showDataView();
+                                        //varyViewHelper.showDataView();
                                     } else {
-                                        varyViewHelper.showEmptyView();
+                                        //varyViewHelper.showEmptyView();
                                     }
                                 }
                             }else{
-                                varyViewHelper.showEmptyView();
+                                //varyViewHelper.showEmptyView();
                             }
                         }else{
-                            varyViewHelper.showEmptyView();
+                            //varyViewHelper.showEmptyView();
                         }
                     }
                 });
@@ -398,7 +398,7 @@ public class CartoonListDelegate extends AppDelegate {
      */
     public void getConnotationCartoonList(final boolean isRefresh){
         if (!isRefresh) {
-            varyViewHelper.showLoadingView();
+            //varyViewHelper.showLoadingView();
             swipeRefreshLayout.setEnabled(false);
         }
         mPage = 1;
@@ -414,7 +414,7 @@ public class CartoonListDelegate extends AppDelegate {
 
                     @Override
                     public void onError(Throwable e) {
-                        varyViewHelper.showErrorView();
+                        //varyViewHelper.showErrorView();
                         swipeRefreshLayout.setRefreshing(false);
                         Logger.e(e);
                     }
@@ -428,16 +428,17 @@ public class CartoonListDelegate extends AppDelegate {
                                 mAdapter.setListNotify(beans);
                                 if (!isRefresh) {
                                     if (beans.size() > 0) {
-                                        varyViewHelper.showDataView();
+                                        //varyViewHelper.showDataView();
                                     } else {
-                                        varyViewHelper.showEmptyView();
+                                        //varyViewHelper.showEmptyView();
                                     }
                                 }
                             }else{
-                                varyViewHelper.showEmptyView();
+                                //varyViewHelper.showEmptyView();
                             }
                         }else{
-                            varyViewHelper.showEmptyView();
+                            //
+                            // varyViewHelper.showEmptyView();
                         }
                     }
                 });
