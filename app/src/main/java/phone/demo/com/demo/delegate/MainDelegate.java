@@ -5,17 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +35,6 @@ import phone.demo.com.library.view.AppDelegate;
 public class MainDelegate extends AppDelegate {
 
     private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
     private List<Fragment> fragments = new ArrayList<>();
     //private List<String> titles=  new ArrayList<>();
     private NavigationView mNavigationView;
@@ -45,6 +42,7 @@ public class MainDelegate extends AppDelegate {
     private FragmentManager fragmentManager;
     private int[] navigationIcons = new int[]{/*R.mipmap.picture,*/R.mipmap.home,R.mipmap.picture};
     private String[] titleList;
+    private MenuItem selectMenuItem;
     private int currentTabIndex = 0;//fragment切换选中选项
 
     public MainDelegate(Activity activity) {
@@ -56,8 +54,6 @@ public class MainDelegate extends AppDelegate {
     public void initWidget() {
         super.initWidget();
         toolbar = get(R.id.toolbar);
-        tabLayout = get(R.id.tabLayout);
-        viewPager = get(R.id.viewpager);
         mNavigationView = get(R.id.nav_view);
         drawerLayout = get(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -68,13 +64,35 @@ public class MainDelegate extends AppDelegate {
         toggle.syncState();
         mNavigationView.inflateHeaderView(R.layout.nav_header_main);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getGroupId() == R.id.menu_group_type) {
-                    selectFragments(item.getItemId());
-                }
+                selectMenuItem = item;
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
+            }
+        });
+        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                if (selectMenuItem!=null&&selectMenuItem.getGroupId() == R.id.menu_group_type) {
+                    selectFragments(selectMenuItem.getItemId());
+                }
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
             }
         });
         disableNavigationViewScrollbars(mNavigationView);
@@ -110,8 +128,8 @@ public class MainDelegate extends AppDelegate {
         super.initData();
         //titles = Arrays.asList(context.getResources().getStringArray(R.array.tab_name));
         Bundle bundle = new Bundle();
-        bundle.putString(Constant.TYPE_KEY,"all");
-        bundle.putString(Constant.TITLE,"首页");
+        bundle.putString(Constant.TYPE_KEY,"quotes");
+        bundle.putString(Constant.TITLE,"美图");
         fragments.add(CartoonMainFragment.newInstance(new Bundle()));
         //fragments.add(HuaBanImageListFragment.newInstance(bundle));
         fragments.add(HuaBanMainFragment.newInstance(new Bundle()));
@@ -125,13 +143,13 @@ public class MainDelegate extends AppDelegate {
 
     public void selectFragments(int position) {
         FragmentTransaction trx = fragmentManager.beginTransaction();
-        /*trx.hide(fragments.get(currentTabIndex));
+        trx.hide(fragments.get(currentTabIndex));
         if (!fragments.get(position).isAdded())
         {
             trx.add(R.id.container_with_refresh, fragments.get(position));
         }
-        trx.show(fragments.get(position)).commit();*/
-        trx.replace(R.id.container_with_refresh,fragments.get(position)).commit();
+        trx.show(fragments.get(position)).commit();
+        //trx.replace(R.id.container_with_refresh,fragments.get(position)).commit();
         currentTabIndex = position;
     }
 

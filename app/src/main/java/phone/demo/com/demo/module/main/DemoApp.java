@@ -1,5 +1,6 @@
 package phone.demo.com.demo.module.main;
 
+import com.antfortune.freeline.FreelineCore;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 import phone.demo.com.library.application.BaseApplication;
@@ -12,6 +13,7 @@ public class DemoApp extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        FreelineCore.init(this);
         Fresco.initialize(getApplicationContext());
         //CrashReport.initCrashReport(getApplicationContext(), Constant.BUGLY_APP_ID, false);
     }

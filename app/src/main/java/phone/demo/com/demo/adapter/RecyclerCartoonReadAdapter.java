@@ -2,6 +2,7 @@ package phone.demo.com.demo.adapter;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -53,12 +54,20 @@ public class RecyclerCartoonReadAdapter extends BaseRecyclerAdapter<String> {
     private void bindData(final ViewHolderGeneral holder, final String cartoonUrl) {
         displaysMetrics = new DisplayMetrics();
         ((Activity)mContext).getWindowManager().getDefaultDisplay().getMetrics(displaysMetrics);
-        holder.iv_image_view.setScaleType(ImageView.ScaleType.FIT_XY);
         Glide.with(mContext).load(cartoonUrl).asBitmap().into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onLoadStarted(Drawable placeholder) {
+                super.onLoadStarted(placeholder);
+                holder.iv_image_view.setImageResource(R.mipmap.ic_launcher);
+                holder.iv_image_view.setVisibility(View.VISIBLE);
+                holder.iv_image_view.setScaleType(ImageView.ScaleType.CENTER);
+            }
+
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 int height = resource.getScaledHeight(displaysMetrics);
                 int width = resource.getScaledWidth(displaysMetrics);
+                holder.iv_image_view.setScaleType(ImageView.ScaleType.FIT_XY);
                 if(height > 4096 || width > 4096){
                     Logger.i("bitmap than size");
                     File file = ImageUtils.saveBitmap(mContext,resource,cartoonUrl);

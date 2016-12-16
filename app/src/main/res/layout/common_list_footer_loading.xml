@@ -11,7 +11,7 @@
         android:layout_width="22dp"
         android:layout_height="@dimen/progressbar_size"
         android:layout_marginRight="@dimen/tv_to_progressbar_margin"
-        android:indeterminateDrawable="@drawable/sample_footer_loading_progress" />
+        style="?android:progressBarStyle" />
 
     <TextView
         android:id="@+id/loading_text"

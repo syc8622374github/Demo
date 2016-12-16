@@ -41,7 +41,7 @@ public class Constant {
     public static final String HISTORYTEXT = "historyText";
 
     //http limit number
-    public static final int LIMIT = 20;
+    public static final int LIMIT = 10;
 
     //RxView点击防止抖动时间间隔
     public static final long throttDuration=300;

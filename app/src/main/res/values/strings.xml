@@ -8,17 +8,9 @@
     <string name="douban_meizi">豆瓣妹纸</string>
     <string name="huaban_meizi">花瓣妹纸</string>
     <string name="jiandan_meizi">煎蛋妹纸</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="card_title">测试Card的title应该是很长的文本</string>
-
-    <!--花瓣图片地址--><!--
-    <string name="url_image_general">http://img.hb.aicdn.com/%s_fw320sf</string>
-    <string name="url_image_big">http://img.hb.aicdn.com/%s_fw658</string>
-    <string name="url_image_small">http://img.hb.aicdn.com/%s_sq75sf</string>-->
-
     <string name="text_to">To</string>
     <string name="text_like_number">%d like</string>
     <string name="text_gather_number">%d gather</string>
