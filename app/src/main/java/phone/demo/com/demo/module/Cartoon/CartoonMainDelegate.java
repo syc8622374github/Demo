@@ -36,8 +36,8 @@ public class CartoonMainDelegate extends AppDelegate {
     @Override
     public void initWidget() {
         super.initWidget();
-        tabLayout = get(R.id.tabLayout);
-        viewPager = get(R.id.viewpager);
+        tabLayout = (TabLayout) rootView.findViewById(R.id.tabLayout);
+        viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
     }
 
     @Override
