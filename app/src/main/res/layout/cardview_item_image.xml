@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:id="@+id/card_item_main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -24,15 +23,15 @@
             android:layout_height="wrap_content"
             android:foreground="@drawable/drawable_default_selector"
             android:transitionName="card_image"
-            tools:layout_height="200dp"
-            >
+            tools:layout_height="200dp">
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/img_card_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxHeight="2000dp"
-                android:maxWidth="2000dp" />
+                android:maxWidth="2000dp"
+                fresco:progressBarAutoRotateInterval="2100"/>
 
             <ImageButton
                 android:id="@+id/ibtn_card_gif"

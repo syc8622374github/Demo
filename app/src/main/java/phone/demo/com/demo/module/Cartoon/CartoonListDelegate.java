@@ -8,7 +8,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -40,7 +39,6 @@ public class CartoonListDelegate extends AppDelegate {
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private LoadingFooter mFooterView;
-    private StaggeredGridLayoutManager staggeredGridLayoutManager;
     private RecyclerShowAPICardAdapter mAdapter;
     private int mPage = 1;
     private final Bundle bundle;
@@ -177,7 +175,6 @@ public class CartoonListDelegate extends AppDelegate {
         if (getFootView() != null) {
             RecyclerViewUtils.addFootView(recyclerView, getFootView());
         }
-        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);

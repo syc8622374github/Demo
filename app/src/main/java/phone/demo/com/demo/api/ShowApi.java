@@ -16,24 +16,44 @@ public interface ShowApi {
     /***
      * 黑白漫画
      ***/
-    @GET("/958-1")
     //获取黑白漫画数据列表
+    @GET("/958-1")
     Observable<ShowApiResponse> getBAWCartoonListData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("type") String type, @Query("page") int page);
 
+    //获取黑白漫画详细信息
     @GET("/958-2")
-        //获取黑白漫画详细信息
     Observable<ShowApiResponse> getBAWCartoonDetailData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("id") String id);
 
 
     /***
      * 内涵漫画
      ***/
-    @GET("/978-2")
     //获取内涵漫画详细列表
+    @GET("/978-2")
     Observable<ShowApiResponse> getConnotationCartoonListData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("page") int page);
 
-    @GET("/978-1")
     //获取内涵漫画详细信息
+    @GET("/978-1")
     Observable<ShowApiResponse> getConnotationCartoonDetailData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("id") String id);
+
+
+
+    /***
+     * 新闻api接口
+     ***/
+    //新闻频道
+    @GET("/109-34")
+    Observable<ShowApiResponse> getNewsTypeData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign);
+
+    //新闻查询
+    @GET("/109-35")
+    Observable<ShowApiResponse> getNewData(@Query("showapi_appid") String appid,
+                                           @Query("showapi_sign") String sign,
+                                           @Query("channelId") String channelId,
+                                           @Query("channelName") String channelName,
+                                           @Query("title") String title,
+                                           @Query("page") String page,
+                                           @Query("needAllList") String needAllList,
+                                           @Query("maxResult") String maxResult);
 
 }
