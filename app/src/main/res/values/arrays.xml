@@ -52,8 +52,74 @@
         <item>connotation_cartoon</item>
     </string-array>
     <string-array name="main_navigation_menu">
+        <item>@string/news</item>
         <item>@string/cartoon</item>
         <!--<item>@string/gank_meizi</item>-->
         <item>@string/meizitu</item>
+    </string-array>
+
+    <string-array name="news_channel_id">
+        <!--国内最新-->
+        <item>5572a109b3cdc86cf39001db</item>
+        <!--国际最新-->
+        <item>5572a109b3cdc86cf39001de</item>
+        <!--军事最新-->
+        <item>5572a109b3cdc86cf39001df</item>
+        <!--财经最新-->
+        <item>5572a109b3cdc86cf39001e0</item>
+        <!--宏观经济最新-->
+        <item>5572a109b3cdc86cf39001e2</item>
+        <!--互联网最新-->
+        <item>5572a109b3cdc86cf39001e3</item>
+        <!--房产最新-->
+        <item>5572a109b3cdc86cf39001e4</item>
+        <!--汽车最新-->
+        <item>5572a109b3cdc86cf39001e5</item>
+        <!--体育最新-->
+        <item>5572a109b3cdc86cf39001e6</item>
+        <!--国际最新-->
+        <item>5572a10ab3cdc86cf39001eb</item>
+        <!--娱乐最新-->
+        <item>5572a109b3cdc86cf39001de</item>
+        <!--电影最新-->
+        <item>5572a10ab3cdc86cf39001ec</item>
+        <!--游戏最新-->
+        <item>5572a10ab3cdc86cf39001ee</item>
+        <!--情感两性最新-->
+        <item>5572a10ab3cdc86cf39001f2</item>
+        <!--健康养生最新-->
+        <item>5572a10ab3cdc86cf39001f3</item>
+        <!--科技最新-->
+        <item>5572a10ab3cdc86cf39001f4</item>
+        <!--数码最新-->
+        <item>5572a10bb3cdc86cf39001f5</item>
+        <!--电脑最新-->
+        <item>5572a10bb3cdc86cf39001f6</item>
+        <!--科普最新-->
+        <item>5572a10bb3cdc86cf39001f7</item>
+        <!--社会最新-->
+        <item>5572a10bb3cdc86cf39001f8</item>
+    </string-array>
+    <string-array name="news_channel_title">
+        <item>国内</item>
+        <item>国际</item>
+        <item>军事</item>
+        <item>财经</item>
+        <item>宏观经济</item>
+        <item>互联网</item>
+        <item>房产</item>
+        <item>汽车</item>
+        <item>体育</item>
+        <item>国际</item>
+        <item>娱乐</item>
+        <item>电影</item>
+        <item>游戏</item>
+        <item>情感两性</item>
+        <item>健康养生</item>
+        <item>科技</item>
+        <item>数码</item>
+        <item>电脑</item>
+        <item>科普</item>
+        <item>社会</item>
     </string-array>
 </resources>

@@ -16,6 +16,7 @@ import java.util.List;
 import phone.demo.com.demo.R;
 import phone.demo.com.demo.adapter.RecyclerShowAPICardAdapter;
 import phone.demo.com.demo.api.ShowApi;
+import phone.demo.com.demo.module.cartoon.bean.CartoonResBody;
 import phone.demo.com.demo.module.cartoon.bean.ShowApiItemBean;
 import phone.demo.com.demo.module.cartoon.bean.ShowApiResponse;
 import phone.demo.com.demo.util.Constant;
@@ -292,7 +293,7 @@ public class CartoonListDelegate extends AppDelegate {
                 .getBAWCartoonListData(Constant.APPID,Constant.SECRET,cartoonType,mPage)
                 .subscribeOn(Schedulers.io())//发布者的运行线程 联网操作属于IO操作
                 .observeOn(AndroidSchedulers.mainThread())//订阅者的运行线程 在main线程中才能修改UI
-                .subscribe(new Subscriber<ShowApiResponse>() {
+                .subscribe(new Subscriber<ShowApiResponse<CartoonResBody>>() {
                     @Override
                     public void onCompleted() {
                         swipeRefreshLayout.setRefreshing(false);
@@ -306,7 +307,7 @@ public class CartoonListDelegate extends AppDelegate {
                     }
 
                     @Override
-                    public void onNext(ShowApiResponse showAPIResponse) {
+                    public void onNext(ShowApiResponse<CartoonResBody> showAPIResponse) {
                         swipeRefreshLayout.setEnabled(true);
                         if(showAPIResponse.getShowapi_res_code()==0){
                             if(showAPIResponse.getShowapi_res_body()!=null){
@@ -338,7 +339,7 @@ public class CartoonListDelegate extends AppDelegate {
                 .getBAWCartoonDetailData(Constant.APPID, Constant.SECRET, id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ShowApiResponse>() {
+                .subscribe(new Subscriber<ShowApiResponse<CartoonResBody>>() {
                     @Override
                     public void onCompleted() {
 
@@ -350,7 +351,7 @@ public class CartoonListDelegate extends AppDelegate {
                     }
 
                     @Override
-                    public void onNext(ShowApiResponse showAPIResponse) {
+                    public void onNext(ShowApiResponse<CartoonResBody> showAPIResponse) {
                         if (showAPIResponse.getShowapi_res_body() != null) {
                             Intent intent = new Intent(context,CartoonReadActivity.class);
                             intent.putExtra(CartoonReadActivity.ARRAY_DATA,showAPIResponse.getShowapi_res_body().getItem().getImgList());
@@ -369,7 +370,7 @@ public class CartoonListDelegate extends AppDelegate {
                 .getBAWCartoonListData(Constant.APPID, Constant.SECRET, cartoonType, mPage++)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ShowApiResponse>() {
+                .subscribe(new Subscriber<ShowApiResponse<CartoonResBody>>() {
                     @Override
                     public void onCompleted() {
 
@@ -381,7 +382,7 @@ public class CartoonListDelegate extends AppDelegate {
                     }
 
                     @Override
-                    public void onNext(ShowApiResponse showAPIResponse) {
+                    public void onNext(ShowApiResponse<CartoonResBody> showAPIResponse) {
                         if (showAPIResponse.getShowapi_res_body() != null) {
                             mAdapter.addListNotify(showAPIResponse.getShowapi_res_body().getPagebean().getContentlist());
                         }
@@ -400,10 +401,10 @@ public class CartoonListDelegate extends AppDelegate {
         }
         mPage = 1;
         RetrofitUtils.createShowApi(context, ShowApi.class, ShowApi.API)
-                .getConnotationCartoonListData(Constant.APPID,Constant.SECRET,mPage)
+                .getConnotationCartoonListData(Constant.APPID,Constant.SECRET,mPage++)
                 .subscribeOn(Schedulers.io())//发布者的运行线程 联网操作属于IO操作
                 .observeOn(AndroidSchedulers.mainThread())//订阅者的运行线程 在main线程中才能修改UI
-                .subscribe(new Subscriber<ShowApiResponse>() {
+                .subscribe(new Subscriber<ShowApiResponse<CartoonResBody>>() {
                     @Override
                     public void onCompleted() {
                         swipeRefreshLayout.setRefreshing(false);
@@ -417,7 +418,7 @@ public class CartoonListDelegate extends AppDelegate {
                     }
 
                     @Override
-                    public void onNext(ShowApiResponse showAPIResponse) {
+                    public void onNext(ShowApiResponse<CartoonResBody> showAPIResponse) {
                         swipeRefreshLayout.setEnabled(true);
                         if(showAPIResponse.getShowapi_res_code()==0){
                             if(showAPIResponse.getShowapi_res_body()!=null){
@@ -450,7 +451,7 @@ public class CartoonListDelegate extends AppDelegate {
                 .getConnotationCartoonDetailData(Constant.APPID, Constant.SECRET, id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ShowApiResponse>() {
+                .subscribe(new Subscriber<ShowApiResponse<CartoonResBody>>() {
                     @Override
                     public void onCompleted() {
 
@@ -462,7 +463,7 @@ public class CartoonListDelegate extends AppDelegate {
                     }
 
                     @Override
-                    public void onNext(ShowApiResponse showAPIResponse) {
+                    public void onNext(ShowApiResponse<CartoonResBody> showAPIResponse) {
                         if (showAPIResponse.getShowapi_res_body() != null) {
                             Intent intent = new Intent(context,CartoonReadActivity.class);
                             intent.putExtra(CartoonReadActivity.DATA,showAPIResponse.getShowapi_res_body().getImg());
@@ -480,7 +481,7 @@ public class CartoonListDelegate extends AppDelegate {
                 .getConnotationCartoonListData(Constant.APPID, Constant.SECRET, mPage++)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ShowApiResponse>() {
+                .subscribe(new Subscriber<ShowApiResponse<CartoonResBody>>() {
                     @Override
                     public void onCompleted() {
 
@@ -492,7 +493,7 @@ public class CartoonListDelegate extends AppDelegate {
                     }
 
                     @Override
-                    public void onNext(ShowApiResponse showAPIResponse) {
+                    public void onNext(ShowApiResponse<CartoonResBody> showAPIResponse) {
                         if (showAPIResponse.getShowapi_res_body() != null) {
                             mAdapter.addListNotify(showAPIResponse.getShowapi_res_body().getPagebean().getContentlist());
                         }

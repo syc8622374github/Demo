@@ -1,4 +1,4 @@
-package phone.demo.com.demo.delegate;
+package phone.demo.com.demo.module.main;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ import java.util.List;
 import phone.demo.com.demo.R;
 import phone.demo.com.demo.module.cartoon.CartoonMainFragment;
 import phone.demo.com.demo.module.huaban.HuaBanMainFragment;
-import phone.demo.com.demo.module.main.MainActivity;
+import phone.demo.com.demo.module.news.NewsMainFragment;
 import phone.demo.com.demo.util.Constant;
 import phone.demo.com.library.view.AppDelegate;
 
@@ -40,7 +40,7 @@ public class MainDelegate extends AppDelegate {
     private NavigationView mNavigationView;
     private DrawerLayout drawerLayout;
     private FragmentManager fragmentManager;
-    private int[] navigationIcons = new int[]{/*R.mipmap.picture,*/R.mipmap.home,R.mipmap.picture};
+    private int[] navigationIcons = new int[]{R.mipmap.bow_tie,R.mipmap.flower,R.mipmap.picture};
     private String[] titleList;
     private MenuItem selectMenuItem;
     private int currentTabIndex = 0;//fragment切换选中选项
@@ -130,8 +130,8 @@ public class MainDelegate extends AppDelegate {
         Bundle bundle = new Bundle();
         bundle.putString(Constant.TYPE_KEY,"quotes");
         bundle.putString(Constant.TITLE,"美图");
+        fragments.add(NewsMainFragment.newInstance(new Bundle()));
         fragments.add(CartoonMainFragment.newInstance(new Bundle()));
-        //fragments.add(HuaBanImageListFragment.newInstance(bundle));
         fragments.add(HuaBanMainFragment.newInstance(new Bundle()));
         selectFragments(0);
     }

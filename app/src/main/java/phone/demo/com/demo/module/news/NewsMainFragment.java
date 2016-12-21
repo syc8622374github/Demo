@@ -1,5 +1,6 @@
 package phone.demo.com.demo.module.news;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import phone.demo.com.library.base.BaseFragment;
@@ -9,6 +10,11 @@ import phone.demo.com.library.base.BaseFragment;
  */
 
 public class NewsMainFragment extends BaseFragment<NewsMainDelegate> {
+    public static NewsMainFragment newInstance(Bundle args) {
+        NewsMainFragment fragment = new NewsMainFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected NewsMainDelegate createDelegate(Fragment fragment) {
         return new NewsMainDelegate(fragment);

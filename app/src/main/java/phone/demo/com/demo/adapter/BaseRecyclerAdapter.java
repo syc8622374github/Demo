@@ -22,6 +22,8 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter   {
     protected final String mUrlGeneralFormat;//普通地址
     protected final String mUrlBigFormat;//大图地址
 
+    protected RecyclerShowAPICardAdapter.OnAdapterListener mListener;
+
     public List<T> getList() {
         return mList;
     }
@@ -43,6 +45,10 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter   {
 
     public void setAdapterPosition(int mAdapterPosition) {
         this.mAdapterPosition = mAdapterPosition;
+    }
+
+    public void setOnClickItemListener(RecyclerShowAPICardAdapter.OnAdapterListener mListener) {
+        this.mListener = mListener;
     }
 
     public BaseRecyclerAdapter(RecyclerView mRecyclerView) {

@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,8 +20,6 @@ import phone.demo.com.demo.module.cartoon.bean.ShowApiItemBean;
 
 public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowApiItemBean> {
 
-    private OnAdapterListener mListener;
-
     public interface OnAdapterListener {
         void onItemClickListener(View view, ShowApiItemBean showAPIItemBean, int position);
     }
@@ -31,17 +28,11 @@ public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowApiItemB
         super(mRecyclerView);
     }
 
-    public void setOnClickItemListener(OnAdapterListener mListener) {
-        this.mListener = mListener;
-    }
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewHolderGeneral holder = null;//ViewHolder的子类
-
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.cardview_item_standard, parent, false);
-        holder = new ViewHolderGeneral(view);//使用子类初始化ViewHolder
+        ViewHolderGeneral holder = new ViewHolderGeneral(view);//使用子类初始化ViewHolder
         return holder;
     }
 
@@ -84,17 +75,15 @@ public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowApiItemB
         public final View mView;
         public final TextView tv_title;//标题或描述文字
         public final ImageView iv_thumbnail;//缩略图
-        public final LinearLayout ll_content;//内容区域
         public final RelativeLayout rl_footer;//地步脚部区域
         public final TextView tv_time;//时间
 
         public ViewHolderGeneral(View view) {
             super(view);
             mView = view;
-            tv_title = (TextView) view.findViewById(R.id.tv_title);
-            iv_thumbnail = (ImageView) view.findViewById(R.id.iv_thumbnail);
+            tv_title = (TextView) view.findViewById(R.id.tv_card_title);
+            iv_thumbnail = (ImageView) view.findViewById(R.id.iv_card_thumbnail);
             tv_time = (TextView) view.findViewById(R.id.tv_time);
-            ll_content = (LinearLayout) view.findViewById(R.id.ll_content);
             rl_footer = (RelativeLayout) view.findViewById(R.id.rl_footer);
         }
     }

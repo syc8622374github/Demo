@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 
-import phone.demo.com.demo.delegate.MainDelegate;
 import phone.demo.com.library.base.BaseActivity;
 
 public class MainActivity extends BaseActivity<MainDelegate> {
