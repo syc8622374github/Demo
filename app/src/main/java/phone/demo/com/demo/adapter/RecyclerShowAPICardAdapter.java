@@ -20,10 +20,6 @@ import phone.demo.com.demo.module.cartoon.bean.ShowApiItemBean;
 
 public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowApiItemBean> {
 
-    public interface OnAdapterListener {
-        void onItemClickListener(View view, ShowApiItemBean showAPIItemBean, int position);
-    }
-
     public RecyclerShowAPICardAdapter(RecyclerView mRecyclerView) {
         super(mRecyclerView);
     }
@@ -77,6 +73,7 @@ public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowApiItemB
         public final ImageView iv_thumbnail;//缩略图
         public final RelativeLayout rl_footer;//地步脚部区域
         public final TextView tv_time;//时间
+        public final RelativeLayout rl_card_right_content;//右边模块内容
 
         public ViewHolderGeneral(View view) {
             super(view);
@@ -85,6 +82,7 @@ public class RecyclerShowAPICardAdapter extends BaseRecyclerAdapter<ShowApiItemB
             iv_thumbnail = (ImageView) view.findViewById(R.id.iv_card_thumbnail);
             tv_time = (TextView) view.findViewById(R.id.tv_time);
             rl_footer = (RelativeLayout) view.findViewById(R.id.rl_footer);
+            rl_card_right_content = (RelativeLayout) view.findViewById(R.id.rl_card_right_content);
         }
     }
 }

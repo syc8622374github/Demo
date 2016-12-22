@@ -64,6 +64,7 @@ public class Constant {
     /*******************全局常量***********************/
     public static final String TYPE_KEY = "key"; //搜索关键字
     public static final String TITLE = "title"; //标题
+    public static final String URL = "url"; //地址
 
     //bugly appid
     public static final String BUGLY_APP_ID = "900060052";
@@ -105,5 +106,10 @@ public class Constant {
     public static final String CARTTON_BAW_TYPE_WY = "/category/weimanhua/wanyi";
     public static final String CARTTON_BAW_TYPE_CH = "/category/weimanhua/chahua";
     public static final String CARTTON_CONNOTATION_TYPE_ALL = "connotation_cartoon";
+
+    /**
+     * 新闻类型
+     */
+    public static final String NEWS_JOKES_TYPE = "/341"; //笑话大全
 
 }

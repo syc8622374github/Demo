@@ -10,6 +10,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import phone.demo.com.demo.R;
+import phone.demo.com.demo.util.Constant;
 import phone.demo.com.library.view.AppDelegate;
 
 /**
@@ -58,6 +59,13 @@ public class WebViewDelegate extends AppDelegate {
                 progressBar.setVisibility(View.GONE);
             }
         });
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
+        String url = activity.getIntent().getStringExtra(Constant.URL);
+        webView.loadUrl(url);
     }
 
     private void initWebSetting() {

@@ -2,6 +2,7 @@ package phone.demo.com.demo.api;
 
 import phone.demo.com.demo.module.cartoon.bean.CartoonResBody;
 import phone.demo.com.demo.module.cartoon.bean.ShowApiResponse;
+import phone.demo.com.demo.module.news.bean.JokeResBody;
 import phone.demo.com.demo.module.news.bean.NewsChannelResBody;
 import phone.demo.com.demo.module.news.bean.NewsResBody;
 import retrofit2.http.GET;
@@ -40,7 +41,6 @@ public interface ShowApi {
     Observable<ShowApiResponse<CartoonResBody>> getConnotationCartoonDetailData(@Query("showapi_appid") String appid, @Query("showapi_sign") String sign, @Query("id") String id);
 
 
-
     /***
      * 新闻api接口
      ***/
@@ -58,5 +58,32 @@ public interface ShowApi {
                                                         @Query("page") String page,
                                                         @Query("needAllList") String needAllList,
                                                         @Query("maxResult") String maxResult);
+
+
+    /***
+     * 笑话大全api
+     ***/
+    //动态搞笑图
+    @GET("/341-3")
+    Observable<ShowApiResponse<JokeResBody>> getGifJokeData(@Query("showapi_appid") String appid,
+                                                            @Query("showapi_sign") String sign,
+                                                            @Query("page") String page,
+                                                            @Query("maxResult") String maxResult);
+
+    //图片笑话大全
+    @GET("/341-2")
+    Observable<ShowApiResponse<JokeResBody>> getBitmapJoskeData(@Query("showapi_appid") String appid,
+                                                                @Query("showapi_sign") String sign,
+                                                                @Query("time") String time,
+                                                                @Query("page") String page,
+                                                                @Query("maxResult") String maxResult);
+
+    //文本笑话大全
+    @GET("/341-1")
+    Observable<ShowApiResponse<JokeResBody>> getTextJokeData(@Query("showapi_appid") String appid,
+                                                             @Query("showapi_sign") String sign,
+                                                             @Query("time") String time,
+                                                             @Query("page") String page,
+                                                             @Query("maxResult") String maxResult);
 
 }

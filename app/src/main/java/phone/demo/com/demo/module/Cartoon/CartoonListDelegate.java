@@ -14,6 +14,7 @@ import android.view.View;
 import java.util.List;
 
 import phone.demo.com.demo.R;
+import phone.demo.com.demo.adapter.BaseRecyclerAdapter;
 import phone.demo.com.demo.adapter.RecyclerShowAPICardAdapter;
 import phone.demo.com.demo.api.ShowApi;
 import phone.demo.com.demo.module.cartoon.bean.CartoonResBody;
@@ -245,9 +246,10 @@ public class CartoonListDelegate extends AppDelegate {
                 }
             }
         });
-        mAdapter.setOnClickItemListener(new RecyclerShowAPICardAdapter.OnAdapterListener() {
+        mAdapter.setOnClickItemListener(new BaseRecyclerAdapter.OnAdapterListener() {
             @Override
-            public void onItemClickListener(View view, ShowApiItemBean showAPIItemBean, int position) {
+            public void onItemClickListener(View view, Object itemBean, int position) {
+                ShowApiItemBean showAPIItemBean = (ShowApiItemBean) itemBean;
                 if(!TextUtils.isEmpty(showAPIItemBean.getId())){
                     String key = bundle.getString(Constant.TYPE_KEY);
                     switch (key){

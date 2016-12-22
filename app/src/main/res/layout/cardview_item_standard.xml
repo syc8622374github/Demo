@@ -4,82 +4,142 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_item_main"
-    card_view:cardElevation="3dp"
+    card_view:cardElevation="2dp"
     card_view:cardPreventCornerOverlap="true"
     card_view:cardUseCompatPadding="true"
-    card_view:contentPadding="8dp"
+    card_view:contentPadding="7dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:foreground="?android:attr/selectableItemBackground"
     app:elevation="@dimen/card_elevation_static">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/ll_card_default"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/iv_card_thumbnail"
             android:layout_width="100dp"
             android:layout_height="75dp"
             android:layout_gravity="center_vertical"
-            android:layout_margin="2dp"/>
-
-        <TextView
-            android:id="@+id/tv_card_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/iv_card_thumbnail"
-            android:layout_marginLeft="5dp"
-            android:gravity="center_vertical"
-            android:padding="2dp"
-            android:textSize="18sp"
-            android:textColor="@color/textColor"/>
-
-        <LinearLayout
-            android:id="@+id/ll_image_list"
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_below="@id/tv_card_title"
-            android:layout_centerInParent="true"
-            android:visibility="gone"
-            android:layout_toRightOf="@id/iv_card_thumbnail"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/iv_card_thumbnail_1"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"/>
-
-            <ImageView
-                android:id="@+id/iv_card_thumbnail_2"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"/>
-
-            <ImageView
-                android:id="@+id/iv_card_thumbnail_3"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"/>
-
-        </LinearLayout>
+            android:scaleType="centerCrop"/>
 
         <RelativeLayout
-            android:id="@+id/rl_footer"
+            android:id="@+id/rl_card_right_content"
             android:layout_toRightOf="@id/iv_card_thumbnail"
-            android:layout_below="@id/ll_image_list"
-            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="75dp">
+
+            <LinearLayout
+                android:id="@+id/tv_card_top"
+                android:orientation="vertical"
+                android:layout_above="@+id/ll_image_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_card_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textSize="14sp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textColor="@color/textColor"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_image_list"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_above="@+id/rl_footer"
+                android:visibility="gone"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_card_thumbnail_1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:id="@+id/iv_card_thumbnail_2"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:id="@+id/iv_card_thumbnail_3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_footer"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:includeFontPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_card_joke"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_card_joke_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/grey_400"/>
+
+        <TextView
+            android:id="@+id/iv_card_joke_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:id="@+id/rv_card_joke_footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_time"
-                android:layout_alignParentBottom="true"
+                android:id="@+id/rv_card_joke_footer_time"
+                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"/>
+                android:layout_height="wrap_content"/>
 
         </RelativeLayout>
-    </RelativeLayout>
+
+    </LinearLayout>
 </android.support.v7.widget.CardView>

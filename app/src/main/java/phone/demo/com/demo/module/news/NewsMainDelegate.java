@@ -51,6 +51,7 @@ public class NewsMainDelegate extends AppDelegate {
             bundle.putString(Constant.TITLE, channelTitles.get(i));
             fragments.add(NewsListFragment.newInstance(bundle));
         }
+        viewPager.setOffscreenPageLimit(fragments.size());
         //fragment嵌套子类fragment需要使用childFragmentManager 对fragment进行管理。否则会照成fragment对二次加载白屏
         viewPager.setAdapter(new MyFragmentPagerAdapter(fragment.getChildFragmentManager(), channelTitles, fragments));
         tabLayout.setupWithViewPager(viewPager);

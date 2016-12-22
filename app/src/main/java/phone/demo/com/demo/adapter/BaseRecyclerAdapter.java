@@ -2,6 +2,7 @@ package phone.demo.com.demo.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,11 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter   {
     protected final String mUrlGeneralFormat;//普通地址
     protected final String mUrlBigFormat;//大图地址
 
-    protected RecyclerShowAPICardAdapter.OnAdapterListener mListener;
+    protected OnAdapterListener mListener;
+
+    public interface OnAdapterListener {
+        void onItemClickListener(View view, Object itemBean, int position);
+    }
 
     public List<T> getList() {
         return mList;
