@@ -110,6 +110,6 @@ public class Constant {
     /**
      * 新闻类型
      */
-    public static final String NEWS_JOKES_TYPE = "/341"; //笑话大全
+    public static final String NEWS_JOKES_TYPE = "b3972aebe92ccc6fd2da6239"; //笑话大全
 
 }

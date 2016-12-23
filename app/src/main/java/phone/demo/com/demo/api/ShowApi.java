@@ -72,7 +72,7 @@ public interface ShowApi {
 
     //图片笑话大全
     @GET("/341-2")
-    Observable<ShowApiResponse<JokeResBody>> getBitmapJoskeData(@Query("showapi_appid") String appid,
+    Observable<ShowApiResponse<JokeResBody>> getBitmapJokeData(@Query("showapi_appid") String appid,
                                                                 @Query("showapi_sign") String sign,
                                                                 @Query("time") String time,
                                                                 @Query("page") String page,

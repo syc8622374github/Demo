@@ -116,15 +116,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="2"
+            android:layout_marginBottom="5dp"
             android:ellipsize="end"/>
 
         <ImageView
+            android:id="@+id/iv_card_joke_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/grey_400"/>
+            android:scaleType="fitXY"
+            android:layout_height="200dp"/>
 
         <TextView
-            android:id="@+id/iv_card_joke_content"
+            android:id="@+id/tv_card_joke_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -134,7 +136,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/rv_card_joke_footer_time"
+                android:id="@+id/tv_card_joke_footer_time"
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

@@ -17,6 +17,8 @@ import phone.demo.com.demo.adapter.RecyclerShowAPINewsAdapter;
 import phone.demo.com.demo.api.ShowApi;
 import phone.demo.com.demo.module.cartoon.bean.ShowApiResponse;
 import phone.demo.com.demo.module.common.WebViewActivity;
+import phone.demo.com.demo.module.news.bean.JokeItemBean;
+import phone.demo.com.demo.module.news.bean.JokeResBody;
 import phone.demo.com.demo.module.news.bean.NewsItemBean;
 import phone.demo.com.demo.module.news.bean.NewsResBody;
 import phone.demo.com.demo.util.Constant;
@@ -43,6 +45,7 @@ public class NewsListDelegate extends AppDelegate {
     private LoadingFooter mFooterView;
     private RecyclerShowAPINewsAdapter mAdapter;
     private LinearLayoutManager linearLayoutManager;
+    private ArrayList<JokeItemBean> jokeData;
 
     protected NewsListDelegate(Fragment fragment) {
         super(fragment);
@@ -62,7 +65,14 @@ public class NewsListDelegate extends AppDelegate {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getNewsData(true);
+                switch (bundle.get(Constant.TYPE_KEY).toString()) {
+                    case Constant.NEWS_JOKES_TYPE:
+                        getJokesData(true);
+                        break;
+                    default:
+                        getNewsData(true);
+                        break;
+                }
             }
         });
     }
@@ -78,11 +88,18 @@ public class NewsListDelegate extends AppDelegate {
     @Override
     public void initData() {
         super.initData();
-        initRecyerView();
-        getNewsData(false);
+        initRecyclerView();
+        switch (bundle.get(Constant.TYPE_KEY).toString()) {
+            case Constant.NEWS_JOKES_TYPE:
+                getJokesData(false);
+                break;
+            default:
+                getNewsData(false);
+                break;
+        }
     }
 
-    private void initRecyerView() {
+    private void initRecyclerView() {
         mAdapter = new RecyclerShowAPINewsAdapter(recyclerView);
         HeaderAndFooterRecyclerViewAdapter headAdapter = new HeaderAndFooterRecyclerViewAdapter(mAdapter);
         recyclerView.setHasFixedSize(true);
@@ -113,13 +130,25 @@ public class NewsListDelegate extends AppDelegate {
                             .findLastCompletelyVisibleItemPositions(new int[2])[1] >= mAdapter.getItemCount();*/
                     boolean isBottom = linearLayoutManager.findLastCompletelyVisibleItemPosition() >= mAdapter.getItemCount();
                     if (isBottom && !swipeRefreshLayout.isRefreshing()) {
-                        getNewsDataOnScroll();
+                        switch (bundle.get(Constant.TYPE_KEY).toString()) {
+                            case Constant.NEWS_JOKES_TYPE:
+                                getJokesOnScroll();
+                                break;
+                            default:
+                                getNewsDataOnScroll();
+                                break;
+                        }
                     }
                 }
             }
         });
     }
 
+    /**
+     * 获取新闻api数据
+     *
+     * @param isRefresh
+     */
     public void getNewsData(boolean isRefresh) {
         if (!isRefresh) {
             //varyViewHelper.showLoadingView();
@@ -146,14 +175,17 @@ public class NewsListDelegate extends AppDelegate {
                     public void onNext(ShowApiResponse<NewsResBody> showApiResponse) {
                         swipeRefreshLayout.setEnabled(true);
                         if (showApiResponse.getShowapi_res_code() == 0 && showApiResponse.getShowapi_res_body() != null) {
-                            ArrayList<NewsItemBean> datas = showApiResponse.getShowapi_res_body().getPageBean().getContentlist();
-                            mAdapter.setListNotify(datas);
+                            ArrayList<NewsItemBean> data = showApiResponse.getShowapi_res_body().getPageBean().getContentlist();
+                            mAdapter.setListNotify(data);
                         }
                     }
                 });
     }
 
-    public void getNewsDataOnScroll(){
+    /**
+     * 加载更多新闻api数据
+     */
+    public void getNewsDataOnScroll() {
         RetrofitUtils.createShowApi(context, ShowApi.class, ShowApi.API)
                 .getNewData(Constant.APPID, Constant.SECRET, bundle.get(Constant.TYPE_KEY).toString(), bundle.get(Constant.TITLE).toString(), "", String.valueOf(mPage++), "0", String.valueOf(10))
                 .subscribeOn(Schedulers.io())
@@ -174,8 +206,139 @@ public class NewsListDelegate extends AppDelegate {
                     public void onNext(ShowApiResponse<NewsResBody> showApiResponse) {
                         swipeRefreshLayout.setEnabled(true);
                         if (showApiResponse.getShowapi_res_code() == 0 && showApiResponse.getShowapi_res_body() != null) {
-                            ArrayList<NewsItemBean> datas = showApiResponse.getShowapi_res_body().getPageBean().getContentlist();
-                            mAdapter.addListNotify(datas);
+                            ArrayList<NewsItemBean> data = showApiResponse.getShowapi_res_body().getPageBean().getContentlist();
+                            mAdapter.addListNotify(data);
+                        }
+                    }
+                });
+    }
+
+    /**
+     * 获取笑话大全数据
+     *
+     * @param isRefresh
+     */
+    public void getJokesData(boolean isRefresh) {
+        if (!isRefresh) {
+            swipeRefreshLayout.setEnabled(false);
+        }
+        mPage = 1;
+        if (jokeData == null) {
+            jokeData = new ArrayList<>();
+        } else {
+            jokeData.clear();
+        }
+        RetrofitUtils.createShowApi(context, ShowApi.class, ShowApi.API)
+                .getBitmapJokeData(Constant.APPID, Constant.SECRET, "", String.valueOf(mPage), String.valueOf(10))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ShowApiResponse<JokeResBody>>() {
+                    @Override
+                    public void onCompleted() {
+                        swipeRefreshLayout.setEnabled(false);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        swipeRefreshLayout.setEnabled(false);
+                        Logger.e(e);
+                    }
+
+                    @Override
+                    public void onNext(ShowApiResponse<JokeResBody> bitmapShowApiResponse) {
+                        final ArrayList<JokeItemBean> data = bitmapShowApiResponse.getShowapi_res_body().getContentlist();
+                        if (bitmapShowApiResponse.getShowapi_res_code() == 0 && data != null) {
+                            RetrofitUtils.createShowApi(context, ShowApi.class, ShowApi.API)
+                                    .getGifJokeData(Constant.APPID, Constant.SECRET, String.valueOf(mPage), String.valueOf(10))
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(new Subscriber<ShowApiResponse<JokeResBody>>() {
+                                        @Override
+                                        public void onCompleted() {
+                                            swipeRefreshLayout.setEnabled(false);
+                                        }
+
+                                        @Override
+                                        public void onError(Throwable e) {
+                                            swipeRefreshLayout.setEnabled(false);
+                                            Logger.e(e);
+                                        }
+
+                                        @Override
+                                        public void onNext(ShowApiResponse<JokeResBody> jokeResBodyShowApiResponse) {
+                                            swipeRefreshLayout.setEnabled(true);
+                                            if (jokeResBodyShowApiResponse.getShowapi_res_code() == 0 && jokeResBodyShowApiResponse.getShowapi_res_body() != null) {
+                                                jokeData.addAll(jokeResBodyShowApiResponse.getShowapi_res_body().getContentlist());
+                                                data.set(data.size() / 2 - 1, jokeData.get(mPage++));
+                                                data.add(jokeData.get(mPage));
+                                                mAdapter.setListNotify(data);
+                                            }
+                                        }
+                                    });
+                        }
+                    }
+                });
+    }
+
+    /**
+     * 加载更多笑话大全数据
+     */
+    public void getJokesOnScroll() {
+        System.out.println(mPage);
+        RetrofitUtils.createShowApi(context, ShowApi.class, ShowApi.API)
+                .getBitmapJokeData(Constant.APPID, Constant.SECRET, "", String.valueOf(mPage), String.valueOf(10))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<ShowApiResponse<JokeResBody>>() {
+                    @Override
+                    public void onCompleted() {
+                        swipeRefreshLayout.setEnabled(false);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        swipeRefreshLayout.setEnabled(false);
+                        Logger.e(e);
+                    }
+
+                    @Override
+                    public void onNext(ShowApiResponse<JokeResBody> bitmapShowApiResponse) {
+                        final ArrayList<JokeItemBean> data = bitmapShowApiResponse.getShowapi_res_body().getContentlist();
+                        if (bitmapShowApiResponse.getShowapi_res_code() == 0 && data != null) {
+                            if(jokeData.size()/2<=mPage-1){
+                                RetrofitUtils.createShowApi(context, ShowApi.class, ShowApi.API)
+                                        .getGifJokeData(Constant.APPID, Constant.SECRET, String.valueOf(mPage++), String.valueOf(10))
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(new Subscriber<ShowApiResponse<JokeResBody>>() {
+                                            @Override
+                                            public void onCompleted() {
+                                                swipeRefreshLayout.setEnabled(false);
+                                            }
+
+                                            @Override
+                                            public void onError(Throwable e) {
+                                                swipeRefreshLayout.setEnabled(false);
+                                                Logger.e(e);
+                                            }
+
+                                            @Override
+                                            public void onNext(ShowApiResponse<JokeResBody> jokeResBodyShowApiResponse) {
+                                                swipeRefreshLayout.setEnabled(true);
+                                                if (jokeResBodyShowApiResponse.getShowapi_res_code() == 0 && jokeResBodyShowApiResponse.getShowapi_res_body() != null) {
+                                                    jokeData.addAll(jokeResBodyShowApiResponse.getShowapi_res_body().getContentlist());
+                                                    data.set(data.size() / 2 - 1, jokeData.get((mPage-1)*2 + 1));
+                                                    data.add(jokeData.get(((mPage++)-1)*2 + 2));
+                                                    mAdapter.addListNotify(data);
+                                                }
+                                            }
+                                        });
+                            }else{
+                                swipeRefreshLayout.setEnabled(true);
+                                data.set(data.size() / 2 - 1, jokeData.get((mPage-1)*2 + 1));
+                                data.add(jokeData.get(((mPage++)-1)*2 + 2));
+                                mAdapter.addListNotify(data);
+                            }
                         }
                     }
                 });

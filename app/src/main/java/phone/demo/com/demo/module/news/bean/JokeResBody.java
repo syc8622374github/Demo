@@ -11,7 +11,7 @@ public class JokeResBody {
     private String allPages; //总页数
     private String currentPage; //当前页
     private String maxResult; //每页最大数
-    private ArrayList<JokeItem> contentlist; //分页实体结构
+    private ArrayList<JokeItemBean> contentlist; //分页实体结构
 
     public String getAllNum() {
         return allNum;
@@ -45,11 +45,11 @@ public class JokeResBody {
         this.maxResult = maxResult;
     }
 
-    public ArrayList<JokeItem> getContentlist() {
+    public ArrayList<JokeItemBean> getContentlist() {
         return contentlist;
     }
 
-    public void setContentlist(ArrayList<JokeItem> contentlist) {
+    public void setContentlist(ArrayList<JokeItemBean> contentlist) {
         this.contentlist = contentlist;
     }
 }

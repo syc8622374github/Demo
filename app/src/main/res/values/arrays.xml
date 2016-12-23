@@ -63,6 +63,8 @@
         <item>5572a109b3cdc86cf39001db</item>
         <!--国际最新-->
         <item>5572a109b3cdc86cf39001de</item>
+        <!--搞笑-->
+        <item>b3972aebe92ccc6fd2da6239</item>
         <!--军事最新-->
         <item>5572a109b3cdc86cf39001df</item>
         <!--财经最新-->
@@ -103,6 +105,7 @@
     <string-array name="news_channel_title">
         <item>国内</item>
         <item>国际</item>
+        <item>搞笑</item>
         <item>军事</item>
         <item>财经</item>
         <item>宏观经济</item>
